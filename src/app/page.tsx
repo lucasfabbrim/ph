@@ -9,11 +9,17 @@ import {
   Facebook,
   BadgeCheck,
   Crown,
+  TicketCheck,
+  Tickets,
+  Ticket,
+  ArrowRight,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import Profile from "@/assets/header.png";
+import Whey from "@/assets/whey.png";
+import Creatina from "@/assets/creatina.png";
 import Photo from "@/assets/card-1.jpeg";
 import Photo2 from "@/assets/card-2.jpeg";
 
@@ -76,49 +82,59 @@ export default function Home() {
             ))}
           </div>
           <div className="space-y-3 border-b border-b-zinc-900 pb-4 mx-4 pt-4">
-            <Card className="bg-white/5 border-zinc-900/40 transition-colors">
-              <Button
-                variant="ghost"
-                className="w-full justify-center p-5 h-16"
-              >
-                <p className="font-light text-base text-white flex flex-row items-center gap-2">
-                  <Crown size={20} className="fill-white" />
-                  Excelência não é um ato, é um hábito.
-                </p>
-              </Button>
+            <Card className="bg-white/5 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16">
+              <p className="font-light text-base text-white flex flex-row items-center gap-2 text-center">
+                <Crown size={20} className="fill-white" />
+                Excelência não é um ato, é um hábito.
+              </p>
             </Card>
           </div>
 
-          <div className="space-y-3 mx-4 pb-6 border-b border-b-zinc-900">
+          <div className="space-y-4 mx-4 pb-6 border-b border-b-zinc-900">
             {[
-              { name: "Creatina monohidratada", color: "bg-green-500" },
-              { name: "Whey Protein concentrado", color: "bg-red-500" },
-              { name: "Supertesto pro 120 cápsulas", color: "bg-blue-500" },
+              { name: "Creatina monohidratada", src: Creatina },
+              { name: "Whey Protein concentrado", src: Whey },
+              { name: "Supertesto pro 120 cápsulas", src: Creatina },
             ].map((product, index) => (
               <Card
                 key={index}
-                className="bg-white/5 border-zinc-900/40 transition-colors"
+                className="bg-zinc-900/90 border-none hover:bg-zinc-800/90 transition-colors"
               >
                 <Button
                   variant="ghost"
-                  className="w-full justify-between p-5 h-20"
+                  className="w-full justify-between p-4 h-auto hover:bg-transparent"
                 >
                   <div className="flex items-center gap-4">
+                    <div className="relative w-12 h-12 rounded-md overflow-hidden">
+                      <Image
+                        src={product.src}
+                        alt={product.name}
+                        className="object-contain"
+                        fill
+                      />
+                    </div>
                     <div className="text-left">
-                      <p className="font-medium">{product.name}</p>
-                      <p className="text-sm text-gray-400">Phelipi</p>
+                      <p className="font-medium text-base text-white">
+                        {product.name}
+                      </p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-sm text-zinc-400 font-light">
+                          Utilize Cupom:{" "}
+                          <span className="font-semibold">PH</span>
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex flex-row gap-2">
-                    <Copy size={22} />
-                    <ExternalLink size={22} />
+                  <div className="flex items-center gap-4 mr-2">
+                    <Copy className="w-10 h-10 text-white" />
+                    <ArrowRight className="w-10 h-10 text-white" />
                   </div>
                 </Button>
               </Card>
             ))}
           </div>
-          {/* Social Media Cards */}
-          <div className="grid grid-cols-2 gap-4 px-4">
+
+          <div className="grid grid-cols-2 gap-4 mx-4 border-b border-b-zinc-900 pb-4">
             <Link
               href="https://youtube.com/@oordonhas"
               className="relative aspect-[2/3] overflow-hidden rounded-xl group"
