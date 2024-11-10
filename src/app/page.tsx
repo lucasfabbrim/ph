@@ -8,6 +8,7 @@ import {
   Copy,
   Facebook,
   BadgeCheck,
+  Crown,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -83,7 +84,8 @@ export default function Home() {
                 variant="ghost"
                 className="w-full justify-center p-5 h-16"
               >
-                <p className="font-light text-base text-white">
+                <p className="font-light text-base text-white flex flex-row items-center gap-2">
+                  <Crown size={20} className="fill-white" />
                   Excelência não é um ato, é um hábito.
                 </p>
               </Button>
