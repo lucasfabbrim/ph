@@ -98,7 +98,7 @@ export default function Home() {
             ].map((product, index) => (
               <Card
                 key={index}
-                className="bg-zinc-900/90 border-none hover:bg-zinc-800/90 transition-colors"
+                className="bg-white/5 border-none hover:bg-zinc-800/90 transition-colors"
               >
                 <Button
                   variant="ghost"
@@ -125,7 +125,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4 mr-2">
+                  <div className="flex items-center gap-3">
                     <Copy className="w-10 h-10 text-white" />
                     <ArrowRight className="w-10 h-10 text-white" />
                   </div>
