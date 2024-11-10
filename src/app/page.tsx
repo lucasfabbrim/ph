@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="bg-black min-h-screen text-white">
       <main className="container w-full mx-auto md:max-w-lg md:items-center">
-        <section className="space-y-6 pt-0.5">
+        <section className="space-y-6 pt-[0.5px]">
           <div className="relative overflow-hidden">
             <Image
               src={Profile}
@@ -21,9 +21,9 @@ export default function Home() {
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-            <div className="absolute bottom-4 left-4 space-y-1">
-              <h1 className="text-3xl font-bold">Phelipi Ordonhas</h1>
-              <p className="text-gray-300">@oordonhas</p>
+            <div className="absolute bottom-4 left-32 space-y-1 text-center">
+              <h1 className="text-3xl font-extrabold">Phelipi Ordonhas</h1>
+              <p className="text-gray-400 font-medium">@oordonhas</p>
             </div>
           </div>
 
