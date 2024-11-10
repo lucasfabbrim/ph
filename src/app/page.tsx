@@ -10,7 +10,7 @@ export default function Home() {
     <div className="bg-black min-h-screen">
       <main className="container flex flex-col">
         <section id="hero" className="bg-white mx-auto">
-          <div className="dark min-h-screen bg-black text-white p-4">
+          <div className="dark min-h-screen bg-black text-white ">
             <div className="max-w-3xl mx-auto space-y-4">
               <div className="relative">
                 <Image
@@ -18,11 +18,12 @@ export default function Home() {
                   alt="Profile background"
                   width={400}
                   height={400}
-                  className="w-full h-[600px] object-cover rounded-lg"
+                  className="w-full h-full object-cover rounded"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/5 to-black/40 rounded-lg" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/5 to-black/70 rounded-lg" />
                 <div className="absolute bottom-4 left-4">
-                  <h1 className="text-2xl font-bold">Phelipi Ordonhas</h1>
+                  <h1 className="text-3xl font-bold">Phelipi Ordonhas</h1>
+
                   <p className="text-gray-300">@oordonhas</p>
                 </div>
               </div>
