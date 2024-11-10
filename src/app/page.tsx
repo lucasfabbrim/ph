@@ -61,7 +61,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <div className="space-y-3 border-b border-b-zinc-950 pb-4 mx-4 pt-4">
+          <div className="space-y-3 border-b border-b-zinc-900 pb-4 mx-4 pt-4">
             <Card className="bg-white/5 border-zinc-900/40 transition-colors">
               <Button
                 variant="ghost"
