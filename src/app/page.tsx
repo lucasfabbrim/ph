@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Instagram, Music2, Youtube, Copy, ExternalLink } from "lucide-react";
+import { Instagram, Music2, Youtube, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import Profile from "@/assets/header.png";
 
-export default function ProfilePage() {
+export default function Home() {
   return (
     <div className="bg-black min-h-screen text-white">
       <main className="container mx-auto px-4 py-8 max-w-4xl">
