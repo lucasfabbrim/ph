@@ -35,7 +35,7 @@ export default function Home() {
             <div className="absolute bottom-4 left-6 items-center">
               <h1 className="text-3xl font-bold flex items-center gap-3">
                 Phelipi Ordonhas{" "}
-                <BadgeCheck className="fill-blue-500 text-black" size={28} />
+                <BadgeCheck className="fill-[#009CEF] text-black" size={28} />
               </h1>
               <p className="text-zinc-500 font-light">@oordonhas</p>
             </div>
