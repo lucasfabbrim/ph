@@ -1,10 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Instagram, Music2, Youtube, ExternalLink, Copy } from "lucide-react";
+import {
+  Instagram,
+  Music2,
+  Youtube,
+  ExternalLink,
+  Copy,
+  Facebook,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import Profile from "@/assets/header.png";
+import Photo from "@/assets/card-1.jpeg";
+import Photo2 from "@/assets/card-2.jpeg";
 
 export default function Home() {
   return (
@@ -101,6 +110,44 @@ export default function Home() {
                 </Button>
               </Card>
             ))}
+          </div>
+          {/* Social Media Cards */}
+          <div className="grid grid-cols-2 gap-4 px-4">
+            <Link
+              href="https://youtube.com/@oordonhas"
+              className="relative aspect-[2/3] overflow-hidden rounded-xl group"
+            >
+              <Image
+                src={Photo}
+                alt="YouTube content"
+                width={400}
+                height={300}
+                className="object-cover w-full h-full brightness-75 group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                <Youtube className="w-6 h-6" />
+                <span className="text-lg font-semibold">Youtube</span>
+              </div>
+            </Link>
+
+            <Link
+              href="https://facebook.com/oordonhas"
+              className="relative aspect-[2/3] overflow-hidden rounded-xl group"
+            >
+              <Image
+                src={Photo2}
+                alt="Facebook content"
+                width={400}
+                height={300}
+                className="object-cover w-full h-full brightness-75 group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                <Facebook className="w-6 h-6" />
+                <span className="text-lg font-semibold">Facebook</span>
+              </div>
+            </Link>
           </div>
         </section>
       </main>
