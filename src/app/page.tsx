@@ -9,15 +9,15 @@ import Profile from "@/assets/header.png";
 export default function Home() {
   return (
     <div className="bg-black min-h-screen text-white">
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
+      <main className="container w-full mx-auto md:max-w-lg md:items-center">
         <section className="space-y-6">
-          <div className="relative rounded-lg overflow-hidden">
+          <div className="relative overflow-hidden">
             <Image
               src={Profile}
               alt="Phelipi Ordonhas profile"
               width={1200}
               height={600}
-              className="w-full h-[400px] object-cover"
+              className="w-full h-full object-cover"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
