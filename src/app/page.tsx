@@ -31,15 +31,15 @@ export default function Home() {
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-            <div className="absolute bottom-4 left-6 space-y-1 items-center">
+            <div className="absolute bottom-4 left-6 items-center">
               <h1 className="text-3xl font-bold flex items-center gap-3">
                 Phelipi Ordonhas{" "}
                 <BadgeCheck
-                  className="fill-blue-600 text-black mt-1"
-                  size={32}
+                  className="fill-sky-600 text-black mt-1"
+                  size={28}
                 />
               </h1>
-              <p className="text-zinc-500 font-light -mt-3">@oordonhas</p>
+              <p className="text-zinc-500 font-light">@oordonhas</p>
             </div>
           </div>
           <div className="flex justify-center gap-4">
