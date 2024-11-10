@@ -69,22 +69,22 @@ export default function Home() {
           <div className="flex justify-center gap-4">
             {[
               {
-                src: InstagramPhoto, // Caminho para a imagem do Instagram
+                src: InstagramPhoto,
                 alt: "Instagram Photo",
                 href: "https://instagram.com/oordonhas",
               },
               {
-                src: WhatsAppPhoto, // Caminho para a imagem do WhatsApp
+                src: WhatsAppPhoto,
                 alt: "WhatsApp Photo",
                 href: "https://instagram.com/oordonhas",
               },
               {
-                src: TikTokPhoto, // Caminho para a imagem do TikTok
+                src: TikTokPhoto,
                 alt: "TikTok Photo",
                 href: "https://instagram.com/oordonhas",
               },
               {
-                src: SpotifyPhoto, // Caminho para a imagem da música
+                src: SpotifyPhoto,
                 alt: "Music Photo",
                 href: "https://music.example.com/oordonhas",
               },
@@ -101,7 +101,7 @@ export default function Home() {
                     alt={social.alt}
                     width={50}
                     height={50}
-                    className="object-contain"
+                    className="object-contain w-full h-full"
                   />
                 </Button>
               </Link>
@@ -160,40 +160,6 @@ export default function Home() {
                 </Button>
               </Card>
             ))}
-          </div>
-
-          {/* Improved Carousel */}
-          <div className="w-full mx-auto pb-6 border-b border-b-zinc-900">
-            <div className="relative overflow-hidden rounded-xl aspect-[4/3]">
-              <div
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-              >
-                {slides.map((slide, index) => (
-                  <div key={index} className="flex-shrink-0 w-full relative">
-                    <Image
-                      src={slide.src}
-                      alt={slide.alt}
-                      fill
-                      className="object-cover brightness-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex justify-center mt-4">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-2 h-2 mx-1 rounded-full transition-all duration-300 ${
-                    currentSlide === index ? "bg-white w-4" : "bg-gray-600"
-                  }`}
-                  onClick={() => setCurrentSlide(index)}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
           </div>
         </section>
       </main>
