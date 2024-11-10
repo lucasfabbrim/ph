@@ -7,6 +7,7 @@ import {
   ExternalLink,
   Copy,
   Facebook,
+  BadgeCheck,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -31,8 +32,14 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
             <div className="absolute bottom-4 left-6 space-y-1 items-center">
-              <h1 className="text-3xl font-bold">Phelipi Ordonhas</h1>
-              <p className="text-gray-400 font-light">@oordonhas</p>
+              <h1 className="text-3xl font-bold flex items-center gap-3">
+                Phelipi Ordonhas{" "}
+                <BadgeCheck
+                  className="fill-blue-600 text-black mt-1"
+                  size={32}
+                />
+              </h1>
+              <p className="text-zinc-500 font-light -mt-3">@oordonhas</p>
             </div>
           </div>
           <div className="flex justify-center gap-4">
