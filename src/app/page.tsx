@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="bg-black min-h-screen text-white">
       <main className="container w-full mx-auto md:max-w-lg md:items-center">
-        <section className="space-y-6">
+        <section className="space-y-6 pt-0.5">
           <div className="relative overflow-hidden">
             <Image
               src={Profile}
