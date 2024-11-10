@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="bg-black min-h-screen">
       <main className="container flex flex-col">
-        <section id="hero" className="bg-white mx-auto">
+        <section id="hero" className="bg-black mx-auto">
           <div className="dark min-h-screen bg-black text-white ">
             <div className="max-w-3xl mx-auto space-y-4">
               <div className="relative">
