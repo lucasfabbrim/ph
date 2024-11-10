@@ -3,7 +3,14 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Instagram, Music2, Crown, Copy, ArrowRight } from "lucide-react";
+import {
+  Instagram,
+  Music2,
+  Crown,
+  Copy,
+  ArrowRight,
+  BadgeCheck,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -53,7 +60,7 @@ export default function Home() {
             <div className="absolute bottom-4 left-6 items-center">
               <h1 className="text-3xl font-bold flex items-center gap-3">
                 Phelipi Ordonhas{" "}
-                <Crown className="fill-[#009CEF] text-black" size={28} />
+                <BadgeCheck className="fill-[#009CEF] text-black" size={28} />
               </h1>
               <p className="text-zinc-500 font-light">@oordonhas</p>
             </div>
@@ -112,6 +119,8 @@ export default function Home() {
 
           <div className="space-y-4 mx-2 pb-6 border-b border-b-zinc-900">
             {[
+              { name: "Creatina monohidratada", src: Creatina },
+              { name: "Whey Protein concentrado", src: Whey },
               { name: "Creatina monohidratada", src: Creatina },
               { name: "Whey Protein concentrado", src: Whey },
             ].map((product, index) => (
