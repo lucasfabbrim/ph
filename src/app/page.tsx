@@ -117,10 +117,12 @@ export default function Home() {
                       <p className="font-medium text-sm text-white">
                         {product.name}
                       </p>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 pt-0.5">
                         <p className="text-sm text-zinc-400 font-light">
-                          Utilize Cupom:{" "}
-                          <span className="font-semibold">PH</span>
+                          Cupom:{" "}
+                          <span className="font-semibold text-zinc-200">
+                            PH
+                          </span>
                         </p>
                       </div>
                     </div>
