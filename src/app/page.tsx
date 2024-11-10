@@ -21,31 +21,31 @@ export default function Home() {
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-            <div className="absolute bottom-4 left-4 space-y-1 items-center">
-              <h1 className="text-3xl font-extrabold">Phelipi Ordonhas</h1>
-              <p className="text-gray-400 font-medium">@oordonhas</p>
+            <div className="absolute bottom-4 left-6 space-y-1 items-center">
+              <h1 className="text-3xl font-bold">Phelipi Ordonhas</h1>
+              <p className="text-gray-400 font-light">@oordonhas</p>
             </div>
           </div>
           <div className="flex justify-center gap-4">
             {[
               {
                 icon: Instagram,
-                bg: "bg-pink-600",
+                bg: "bg-white",
                 href: "https://instagram.com/oordonhas",
               },
               {
                 icon: Music2,
-                bg: "bg-black",
+                bg: "bg-white",
                 href: "https://music.example.com/oordonhas",
               },
               {
                 icon: Music2,
-                bg: "bg-green-600",
+                bg: "bg-white",
                 href: "https://spotify.com/artist/oordonhas",
               },
               {
                 icon: Youtube,
-                bg: "bg-red-600",
+                bg: "bg-white",
                 href: "https://youtube.com/@oordonhas",
               },
             ].map((social, index) => (
@@ -53,10 +53,10 @@ export default function Home() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={`rounded-full ${social.bg} hover:opacity-80 transition-opacity`}
+                  className={`rounded-full ${social.bg} hover:bg-white/90 transition-opacity`}
                   aria-label={`Visit ${social.icon.name} profile`}
                 >
-                  <social.icon className="h-5 w-5" />
+                  <social.icon className="h-5 w-5 text-black fill-black" />
                 </Button>
               </Link>
             ))}
