@@ -62,7 +62,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3 px-4">
             {[
               { name: "Creatina monohidratada", color: "bg-green-500" },
               { name: "Whey Protein concentrado", color: "bg-red-500" },
