@@ -65,9 +65,9 @@ export default function Home() {
             <Card className="bg-white/5 border-zinc-900/40 transition-colors">
               <Button
                 variant="ghost"
-                className="w-full justify-center p-5 h-20"
+                className="w-full justify-center p-5 h-16"
               >
-                <p className="font-medium text-base text-white">
+                <p className="font-light text-base text-white">
                   Excelência não é um ato, é um hábito.
                 </p>
               </Button>
