@@ -81,7 +81,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          <div className="space-y-3 border-b border-b-zinc-900 pb-4 mx-4 pt-4">
+          <div className="space-y-3 border-b border-b-zinc-900 pb-4 mx-2 pt-4">
             <Card className="bg-white/5 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16">
               <p className="font-light text-base text-white flex flex-row items-center gap-2 text-center">
                 <Crown size={20} className="fill-white" />
@@ -90,7 +90,7 @@ export default function Home() {
             </Card>
           </div>
 
-          <div className="space-y-4 mx-4 pb-6 border-b border-b-zinc-900">
+          <div className="space-y-4 mx-2 pb-6 border-b border-b-zinc-900">
             {[
               { name: "Creatina monohidratada", src: Creatina },
               { name: "Whey Protein concentrado", src: Whey },
@@ -114,7 +114,7 @@ export default function Home() {
                       />
                     </div>
                     <div className="text-left">
-                      <p className="font-medium text-base text-white">
+                      <p className="font-medium text-sm text-white">
                         {product.name}
                       </p>
                       <div className="flex items-center gap-2">
@@ -149,7 +149,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               <div className="absolute bottom-4 left-4 flex items-center gap-2">
                 <Youtube className="w-6 h-6" />
-                <span className="text-lg font-semibold">Youtube</span>
+                <span className="text-lg font-semibold">WhatsApp</span>
               </div>
             </Link>
 
