@@ -10,14 +10,14 @@ export default function Home() {
   return (
     <div className="bg-black min-h-screen text-white">
       <main className="container w-full mx-auto md:max-w-lg md:items-center">
-        <section className="space-y-6 pt-[0.5px]">
+        <section className="space-y-6 pt-[0.5px] lg:pt-3">
           <div className="relative overflow-hidden">
             <Image
               src={Profile}
               alt="Phelipi Ordonhas profile"
               width={1200}
               height={600}
-              className="w-full h-full object-cover"
+              className="w-full h-full lg:h-[550px] object-cover"
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -61,6 +61,18 @@ export default function Home() {
               </Link>
             ))}
           </div>
+          <div className="space-y-3 border-b border-b-zinc-950 pb-4 mx-4 pt-4">
+            <Card className="bg-white/5 border-zinc-900/40 transition-colors">
+              <Button
+                variant="ghost"
+                className="w-full justify-center p-5 h-20"
+              >
+                <p className="font-medium text-base text-white">
+                  Excelência não é um ato, é um hábito.
+                </p>
+              </Button>
+            </Card>
+          </div>
 
           <div className="space-y-3 px-4">
             {[
@@ -77,7 +89,6 @@ export default function Home() {
                   className="w-full justify-between p-5 h-20"
                 >
                   <div className="flex items-center gap-4">
-                    <div className={`w-9 h-9 ${product.color} rounded`}></div>
                     <div className="text-left">
                       <p className="font-medium">{product.name}</p>
                       <p className="text-sm text-gray-400">Phelipi</p>
