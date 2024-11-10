@@ -11,14 +11,14 @@ export default function Home() {
       <main className="container flex flex-col">
         <section id="hero" className="bg-black mx-auto">
           <div className="dark min-h-screen bg-black text-white ">
-            <div className="max-w-3xl mx-auto space-y-4">
+            <div className="max-w-4xl mx-auto space-y-4">
               <div className="relative">
                 <Image
                   src={Profile}
-                  alt="Profile background"
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover rounded"
+                  alt="Profile"
+                  width={0}
+                  height={0}
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/5 to-black/70 rounded-lg" />
                 <div className="absolute bottom-4 left-4">
