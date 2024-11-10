@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Instagram, Music2, Youtube, ExternalLink } from "lucide-react";
+import { Instagram, Music2, Youtube, ExternalLink, Copy } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,12 +21,11 @@ export default function Home() {
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-            <div className="absolute bottom-4 left-32 space-y-1 text-center">
+            <div className="absolute bottom-4 left-4 space-y-1 items-center">
               <h1 className="text-3xl font-extrabold">Phelipi Ordonhas</h1>
               <p className="text-gray-400 font-medium">@oordonhas</p>
             </div>
           </div>
-
           <div className="flex justify-center gap-4">
             {[
               {
@@ -71,20 +70,23 @@ export default function Home() {
             ].map((product, index) => (
               <Card
                 key={index}
-                className="bg-gray-900/50 border-gray-800 hover:bg-gray-800/50 transition-colors"
+                className="bg-white/5 border-zinc-900/40 transition-colors"
               >
                 <Button
                   variant="ghost"
-                  className="w-full justify-between p-4 h-auto"
+                  className="w-full justify-between p-5 h-20"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className={`w-8 h-8 ${product.color} rounded`}></div>
+                  <div className="flex items-center gap-4">
+                    <div className={`w-9 h-9 ${product.color} rounded`}></div>
                     <div className="text-left">
                       <p className="font-medium">{product.name}</p>
                       <p className="text-sm text-gray-400">Phelipi</p>
                     </div>
                   </div>
-                  <ExternalLink className="h-4 w-4" />
+                  <div className="flex flex-row gap-2">
+                    <Copy size={22} />
+                    <ExternalLink size={22} />
+                  </div>
                 </Button>
               </Card>
             ))}
