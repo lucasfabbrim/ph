@@ -83,7 +83,7 @@ export default function Home() {
             </Card>
           </div>
 
-          <div className="space-y-3 px-4">
+          <div className="space-y-3 mx-4 pb-6 border-b border-b-zinc-900">
             {[
               { name: "Creatina monohidratada", color: "bg-green-500" },
               { name: "Whey Protein concentrado", color: "bg-red-500" },
