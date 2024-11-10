@@ -1,19 +1,9 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import {
-  Instagram,
-  Music2,
-  Youtube,
-  ExternalLink,
-  Copy,
-  Facebook,
-  BadgeCheck,
-  Crown,
-  TicketCheck,
-  Tickets,
-  Ticket,
-  ArrowRight,
-} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Instagram, Music2, Crown, Copy, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -23,7 +13,29 @@ import Creatina from "@/assets/creatina.png";
 import Photo from "@/assets/card-1.jpeg";
 import Photo2 from "@/assets/card-2.jpeg";
 
+import InstagramPhoto from "@/assets/icons/instagram.png";
+import TikTokPhoto from "@/assets/icons/tik-tok.png";
+import WhatsAppPhoto from "@/assets/icons/social.png";
+import SpotifyPhoto from "@/assets/icons/spotify.png";
+
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [
+    {
+      src: Photo,
+      alt: "Instagram content",
+    },
+    { src: Photo2, alt: "Music content" },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="bg-black min-h-screen text-white">
       <main className="container w-full mx-auto md:max-w-lg md:items-center">
@@ -41,46 +53,54 @@ export default function Home() {
             <div className="absolute bottom-4 left-6 items-center">
               <h1 className="text-3xl font-bold flex items-center gap-3">
                 Phelipi Ordonhas{" "}
-                <BadgeCheck className="fill-[#009CEF] text-black" size={28} />
+                <Crown className="fill-[#009CEF] text-black" size={28} />
               </h1>
               <p className="text-zinc-500 font-light">@oordonhas</p>
             </div>
           </div>
+
           <div className="flex justify-center gap-4">
             {[
               {
-                icon: Instagram,
-                bg: "bg-white",
+                src: InstagramPhoto, // Caminho para a imagem do Instagram
+                alt: "Instagram Photo",
                 href: "https://instagram.com/oordonhas",
               },
               {
-                icon: Music2,
-                bg: "bg-white",
+                src: WhatsAppPhoto, // Caminho para a imagem do WhatsApp
+                alt: "WhatsApp Photo",
+                href: "https://instagram.com/oordonhas",
+              },
+              {
+                src: TikTokPhoto, // Caminho para a imagem do TikTok
+                alt: "TikTok Photo",
+                href: "https://instagram.com/oordonhas",
+              },
+              {
+                src: SpotifyPhoto, // Caminho para a imagem da música
+                alt: "Music Photo",
                 href: "https://music.example.com/oordonhas",
-              },
-              {
-                icon: Music2,
-                bg: "bg-white",
-                href: "https://spotify.com/artist/oordonhas",
-              },
-              {
-                icon: Youtube,
-                bg: "bg-white",
-                href: "https://youtube.com/@oordonhas",
               },
             ].map((social, index) => (
               <Link key={index} href={social.href} passHref>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={`rounded-full ${social.bg} hover:bg-white/90 transition-opacity`}
-                  aria-label={`Visit ${social.icon.name} profile`}
+                  className={`rounded-full hover:bg-white/10 transition-opacity`}
+                  aria-label={`Visit ${social.alt} profile`}
                 >
-                  <social.icon className="h-5 w-5 text-black fill-black" />
+                  <Image
+                    src={social.src}
+                    alt={social.alt}
+                    width={50}
+                    height={50}
+                    className="object-contain"
+                  />
                 </Button>
               </Link>
             ))}
           </div>
+
           <div className="space-y-3 border-b border-b-zinc-900 pb-4 mx-2 pt-4">
             <Card className="bg-white/5 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16">
               <p className="font-light text-base text-white flex flex-row items-center gap-2 text-center">
@@ -94,7 +114,6 @@ export default function Home() {
             {[
               { name: "Creatina monohidratada", src: Creatina },
               { name: "Whey Protein concentrado", src: Whey },
-              { name: "Supertesto pro 120 cápsulas", src: Creatina },
             ].map((product, index) => (
               <Card
                 key={index}
@@ -117,12 +136,10 @@ export default function Home() {
                       <p className="font-medium text-sm text-white">
                         {product.name}
                       </p>
-                      <div className="flex items-center gap-2 pt-0.5">
+                      <div className="flex items-center gap-2">
                         <p className="text-sm text-zinc-400 font-light">
-                          Cupom:{" "}
-                          <span className="font-semibold text-zinc-200">
-                            PH
-                          </span>
+                          Utilize Cupom:{" "}
+                          <span className="font-semibold">PH</span>
                         </p>
                       </div>
                     </div>
@@ -136,42 +153,38 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mx-4 border-b border-b-zinc-900 pb-4">
-            <Link
-              href="https://youtube.com/@oordonhas"
-              className="relative aspect-[2/3] overflow-hidden rounded-xl group"
-            >
-              <Image
-                src={Photo}
-                alt="YouTube content"
-                width={400}
-                height={300}
-                className="object-cover w-full h-full brightness-75 group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                <Youtube className="w-6 h-6" />
-                <span className="text-lg font-semibold">WhatsApp</span>
+          {/* Improved Carousel */}
+          <div className="w-full mx-auto pb-6 border-b border-b-zinc-900">
+            <div className="relative overflow-hidden rounded-xl aspect-[4/3]">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {slides.map((slide, index) => (
+                  <div key={index} className="flex-shrink-0 w-full relative">
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      className="object-cover brightness-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                  </div>
+                ))}
               </div>
-            </Link>
-
-            <Link
-              href="https://facebook.com/oordonhas"
-              className="relative aspect-[2/3] overflow-hidden rounded-xl group"
-            >
-              <Image
-                src={Photo2}
-                alt="Facebook content"
-                width={400}
-                height={300}
-                className="object-cover w-full h-full brightness-75 group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                <Facebook className="w-6 h-6" />
-                <span className="text-lg font-semibold">Facebook</span>
-              </div>
-            </Link>
+            </div>
+            <div className="flex justify-center mt-4">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-2 h-2 mx-1 rounded-full transition-all duration-300 ${
+                    currentSlide === index ? "bg-white w-4" : "bg-gray-600"
+                  }`}
+                  onClick={() => setCurrentSlide(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </section>
       </main>
