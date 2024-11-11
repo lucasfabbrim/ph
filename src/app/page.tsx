@@ -16,6 +16,8 @@ import Link from "next/link";
 import Profile from "@/assets/header.png";
 import Whey from "@/assets/whey.png";
 import Creatina from "@/assets/creatina.png";
+import Arginina from "@/assets/arginine.png";
+import Glutamina from "@/assets/glutanima.png";
 
 import InstagramCarouselComponent from "@/components/instagram";
 
@@ -140,11 +142,11 @@ export default function Home() {
               { id: 2, name: "Whey Protein", src: Whey, link: "" },
               {
                 id: 3,
-                name: "Pré-treino",
-                src: Creatina,
+                name: "Arginina",
+                src: Arginina,
                 link: "",
               },
-              { id: 4, name: "BCAA", src: Whey, link: "" },
+              { id: 4, name: "Glutamina", src: Glutamina, link: "" },
             ].map((product, index) => (
               <Card
                 key={index}
@@ -161,8 +163,11 @@ export default function Home() {
                       />
                     </div>
                     <div className="text-left">
-                      <p className="font-medium text-base text-white">
+                      <p className="font-medium text-base text-white flex items-center gap-2">
                         {product.name}
+                        <span className="text-xs text-zinc-400 font-normal">
+                          (Recomendação)
+                        </span>
                       </p>
                       <div className="flex items-center gap-2">
                         <p className="text-sm text-white font-normal flex items-center gap-1.5 ml-0.5 pt-.5">
