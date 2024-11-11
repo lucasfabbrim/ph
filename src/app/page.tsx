@@ -87,8 +87,8 @@ export default function Home() {
 
           {/* Excellence Card */}
           <div className="space-y-3 border-b border-b-zinc-900 pb-12 mx-6 pt-6 border-t border-t-zinc-900">
-            <h1 className="items-center text-center text-xl pb-4 font-semibold">
-              Organização & Produtividade
+            <h1 className="items-center text-center text-xl pb-5 font-semibold pt-4">
+              Organização
             </h1>
             <Card className="bg-neutral-900/60 border-none rounded-[25px]">
               <div className="w-full justify-between p-4 h-auto flex items-center">
