@@ -97,7 +97,7 @@ export default function InstagramCarouselComponent() {
         </div>
       </div>
 
-      <div className="flex justify-center gap-1.5 pt-4">
+      <div className="flex justify-center gap-0.5 pt-4">
         {carouselImages.map((_, index) => (
           <button
             key={index}
