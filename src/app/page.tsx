@@ -8,6 +8,7 @@ import {
   Files,
   Copy,
   ChevronRight,
+  ChevronDown,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -44,10 +45,16 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
             <div className="absolute bottom-6 flex justify-center items-center w-full text-center">
               <div>
-                <h1 className="text-3xl font-bold flex items-center justify-center gap-3">
+                <h1 className="text-3xl font-bold justify-center">
                   Phelipi Ordonhas{" "}
                 </h1>
-                <p className="text-zinc-400 text-sm -mt-0.5">@oordonhas</p>
+                <p className="text-zinc-400 text-sm -mt-0.5 flex items-center justify-center">
+                  @oordonhas{" "}
+                  <BadgeCheck
+                    className="fill-[#009CEF] text-black ml-1 mt-0.5"
+                    size={14}
+                  />
+                </p>
               </div>
             </div>
           </div>
@@ -87,8 +94,9 @@ export default function Home() {
 
           {/* Excellence Card */}
           <div className="space-y-3 border-b border-b-zinc-900 pb-12 mx-6 pt-6 border-t border-t-zinc-900">
-            <h1 className="items-center text-center text-xl pb-5 font-semibold pt-4">
+            <h1 className="items-center text-center text-xl pb-5 font-semibold pt-4 flex flex-col">
               Organização
+              <ChevronDown size={22} className="mt-3 text-zinc-500" />
             </h1>
             <Card className="bg-neutral-900/60 border-none rounded-[25px]">
               <div className="w-full justify-between p-4 h-auto flex items-center">
@@ -126,8 +134,9 @@ export default function Home() {
           </div>
 
           <div className="space-y-5 mx-6 pb-10 border-b border-b-zinc-900 pt-4">
-            <h1 className="items-center text-center text-xl pb-4 font-semibold">
+            <h1 className="items-center text-center text-xl pb-4 font-semibold flex flex-col">
               Suplementação
+              <ChevronDown size={22} className="mt-3 text-zinc-500" />
             </h1>
             {[
               {
