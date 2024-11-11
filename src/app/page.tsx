@@ -123,7 +123,7 @@ export default function Home() {
                         {product.name}
                       </p>
                       <div className="flex items-center gap-2">
-                        <p className="text-sm text-white font-normal flex items-center gap-2 ml-0.5">
+                        <p className="text-sm text-white font-normal flex items-center gap-1.5 ml-0.5 pt-.5">
                           <Cupom className="w-4 h-4 " />
                           PH
                         </p>
