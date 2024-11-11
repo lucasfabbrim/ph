@@ -117,7 +117,7 @@ export default function Home() {
                       />
                     </div>
                     <div className="text-left">
-                      <p className="font-bold text-base text-white">
+                      <p className="font-semibold text-base text-white">
                         {product.name}
                       </p>
                       <div className="flex items-center gap-2">
