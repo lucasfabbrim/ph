@@ -10,8 +10,11 @@ import NotePerfil from "@/assets/note-perfil.png";
 import PHProfile from "@/assets/perfil-instagram.png";
 import Photo from "@/assets/card-1.jpeg";
 import Photo2 from "@/assets/card-2.jpeg";
+import Photo3 from "@/assets/card-3.png";
+import Photo4 from "@/assets/card-4.png";
+import Photo5 from "@/assets/card-5.png";
 
-const carouselImages = [Photo, Photo2];
+const carouselImages = [Photo, Photo2, Photo3, Photo4, Photo5];
 
 export default function InstagramCarouselComponent() {
   const [isLiked, setIsLiked] = useState(false);
@@ -68,7 +71,7 @@ export default function InstagramCarouselComponent() {
       </div>
 
       <div
-        className="relative aspect-[4/5] bg-transparent overflow-hidden"
+        className="relative aspect-[3/5] bg-transparent overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
