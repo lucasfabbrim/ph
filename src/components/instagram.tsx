@@ -117,18 +117,18 @@ export default function InstagramCarouselComponent() {
               className="hover:text-zinc-300 transition-colors flex flex-row gap-1.5 items-center"
             >
               <Heart
-                className={`w-6 h-6 ${
+                className={`w-5 h-5 ${
                   !isLiked ? "fill-red-600 stroke-red-600" : ""
                 }`}
               />
               <span className="font-semibold text-xs">88,6 mil</span>
             </button>
             <button className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1">
-              <MessageCircle className="w-5 h-5" />
+              <MessageCircle className="w-4 h-4" />
               <span className="font-semibold text-xs">858</span>
             </button>
             <button className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1">
-              <Send className="w-5 h-5" />
+              <Send className="w-4 h-4" />
               <span className="font-semibold text-xs">3,6 mil</span>
             </button>
           </div>
@@ -136,7 +136,7 @@ export default function InstagramCarouselComponent() {
             onClick={() => setIsSaved(!isSaved)}
             className="hover:text-zinc-300 transition-colors"
           >
-            <Bookmark className={`w-5 h-5 ${!isSaved ? "fill-current" : ""}`} />
+            <Bookmark className={`w-4 h-4 ${!isSaved ? "fill-current" : ""}`} />
           </button>
         </div>
         <div className="flex items-center gap-2 mt-2">
