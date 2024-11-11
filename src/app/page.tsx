@@ -78,7 +78,7 @@ export default function Home() {
           {/* Excellence Card */}
           <div className="space-y-3 border-b border-b-zinc-900 pb-8 mx-6 pt-6">
             <Card className="bg-zinc-950/80 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16">
-              <p className="text-base text-white flex flex-row items-center gap-2 text-center">
+              <p className="text-sm text-white flex flex-row items-center gap-2 text-center">
                 <Crown size={20} className="fill-yellow-500 text-yellow-500" />
                 Excelência não é um ato, é um hábito.
               </p>
