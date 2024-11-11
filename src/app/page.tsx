@@ -25,7 +25,7 @@ import TikTokIcon from "@/assets/icons/titkok.svg";
 import SpotifyIcon from "@/assets/icons/spotify.svg";
 import Copiando from "@/assets/icons/copiando.svg";
 import Cupom from "@/assets/icons/cupom.svg";
-import { Button } from "@/components/ui/button";
+import NotePerfil from "@/assets/note-perfil.png";
 
 export default function Home() {
   return (
@@ -52,7 +52,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex justify-center gap-3">
+          <div className="flex justify-center gap-3 pb-10">
             {[
               {
                 src: InstagramIcon,
@@ -86,16 +86,49 @@ export default function Home() {
           </div>
 
           {/* Excellence Card */}
-          <div className="space-y-3 border-b border-b-zinc-900 pb-8 mx-6 pt-6">
-            <Card className="bg-neutral-900/60 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16 rounded-[25px]">
-              <p className="text-sm font-medium text-white flex flex-row items-center gap-2 text-center">
-                <Crown size={20} className="fill-yellow-500 text-yellow-500" />
-                Excelência não é um ato, é um hábito.
-              </p>
+          <div className="space-y-3 border-b border-b-zinc-900 pb-12 mx-6 pt-6 border-t border-t-zinc-900">
+            <h1 className="items-center text-center text-xl pb-4 font-semibold">
+              Organização
+            </h1>
+            <Card className="bg-neutral-900/60 border-none rounded-[25px]">
+              <div className="w-full justify-between p-4 h-auto flex items-center">
+                <div className="flex items-center gap-4">
+                  <div className="relative w-12 h-12 rounded-md overflow-hidden">
+                    <Image
+                      src={NotePerfil}
+                      alt="Note Private"
+                      className="object-contain"
+                      fill
+                    />
+                  </div>
+                  <div className="text-left">
+                    <p className="font-medium text-base text-white">
+                      Note Private
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm text-white font-normal flex items-center gap-1.5 ml-0.5 pt-.5">
+                        <Cupom className="w-4 h-4 " />
+                        PH
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 mr-3">
+                  <Link href="#">
+                    <Copiando className="w-5 h-5" />
+                  </Link>
+                  <Link href="#">
+                    <ShoppingCart className="w-6 h-6 text-white fill-white" />
+                  </Link>
+                </div>
+              </div>
             </Card>
           </div>
 
           <div className="space-y-5 mx-6 pb-10 border-b border-b-zinc-900 pt-4">
+            <h1 className="items-center text-center text-xl pb-4 font-semibold">
+              Suplementação
+            </h1>
             {[
               {
                 id: 1,
