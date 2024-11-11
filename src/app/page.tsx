@@ -145,10 +145,6 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-center gap-4 mr-3">
-                  <span className="mr-2 text-sm text-zinc-400">
-                    Em breve...
-                  </span>
-
                   <Link href="https://www.instagram.com/noteplanning">
                     <InstagramIcon className="text-white" />
                   </Link>
@@ -171,9 +167,9 @@ export default function Home() {
               },
               {
                 id: 2,
-                name: "Whey Protein",
+                name: "Whey",
                 src: Whey,
-                link: "https://www.gsuplementos.com.br/whey-protein-concentrado-1kg-growth-supplements-p985936",
+                link: "https://www.gsuplementos.com.br/bebida-lactea-uht-de-proteinas-growth-supplements",
               },
               {
                 id: 3,
