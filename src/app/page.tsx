@@ -21,7 +21,6 @@ export default function Home() {
     <div className="bg-black min-h-screen text-white">
       <main className="container w-full mx-auto md:max-w-lg md:items-center">
         <section className="space-y-6 pt-[0.5px] lg:pt-3">
-          {/* Profile Image */}
           <div className="relative overflow-hidden">
             <Image
               src={Profile}
@@ -37,9 +36,7 @@ export default function Home() {
                 Phelipi Ordonhas{" "}
                 <BadgeCheck className="fill-[#009CEF] text-black" size={28} />
               </h1>
-              <p className="text-zinc-400 font-light text-sm -mt-0.5">
-                @oordonhas
-              </p>
+              <p className="text-zinc-400 text-sm -mt-0.5">@oordonhas</p>
             </div>
           </div>
 
@@ -129,12 +126,12 @@ export default function Home() {
                       />
                     </div>
                     <div className="text-left">
-                      <p className="font-medium text-sm text-white">
+                      <p className="font-bold text-sm text-white">
                         {product.name}
                       </p>
                       <div className="flex items-center gap-2">
-                        <p className="text-xs pt-0.5 text-zinc-400 font-light">
-                          Ganhe desconto, use cupom:{" "}
+                        <p className="text-xs pt-0.5 text-zinc-300">
+                          Ganhe desconto, Cupom:{" "}
                           <span className="font-semibold text-white">PH</span>
                         </p>
                       </div>
