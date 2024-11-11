@@ -11,6 +11,7 @@ import {
   ChevronRight,
   ChevronDown,
   InstagramIcon,
+  Phone,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -234,12 +235,18 @@ export default function Home() {
           </div>
 
           {/* Mensagem de rodapé */}
-          <div className="mx-6 justify-center flex flex-col pb-4 items-center text-center">
+          <div className="mx-6 justify-center flex flex-col pb-10 pt-4 items-center text-center">
             <a
               href="https://api.whatsapp.com/send?phone=5519993356780&text=Ol%C3%A1,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."
               className="text-xs text-zinc-400 pt-1"
             >
               Desenvolvido por Lucas Mendes.
+            </a>
+            <a
+              href="https://api.whatsapp.com/send?phone=5519993356780&text=Ol%C3%A1,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."
+              className="text-xs text-zinc-400 pt-1"
+            >
+              Estamos aqui para ajudar! Clique para entrar em contato.
             </a>
           </div>
         </section>
