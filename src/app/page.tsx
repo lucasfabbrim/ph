@@ -65,26 +65,26 @@ export default function Home() {
                 href: "https://spotify.com/oordonhas",
               },
             ].map((product, index) => (
-              <div
+              <a
                 key={index}
+                href={product.href}
                 className="flex items-center justify-center rounded-xl text-white transition-colors "
               >
                 <product.src />
-              </div>
+              </a>
             ))}
           </div>
 
           {/* Excellence Card */}
           <div className="space-y-3 border-b border-b-zinc-900 pb-8 mx-6 pt-6">
-            <Card className="bg-white/5 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16">
-              <p className="font-light text-base text-white flex flex-row items-center gap-2 text-center">
-                <Crown size={20} className="fill-white" />
+            <Card className="bg-zinc-950/80 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16">
+              <p className="text-base text-white flex flex-row items-center gap-2 text-center">
+                <Crown size={20} className="fill-yellow-500 text-yellow-500" />
                 Excelência não é um ato, é um hábito.
               </p>
             </Card>
           </div>
 
-          {/* Product Cards */}
           <div className="space-y-5 mx-6 pb-10 border-b border-b-zinc-900 pt-4">
             {[
               {
@@ -117,11 +117,11 @@ export default function Home() {
                       />
                     </div>
                     <div className="text-left">
-                      <p className="font-bold text-sm text-white">
+                      <p className="font-bold text-base text-white">
                         {product.name}
                       </p>
                       <div className="flex items-center gap-2">
-                        <p className="text-xs pt-0.5 text-zinc-300">
+                        <p className="text-sm pt-0.5 text-zinc-300">
                           Use Cupom:{" "}
                           <span className="font-semibold text-white">PH</span>
                         </p>
