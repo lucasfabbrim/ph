@@ -2,7 +2,7 @@
 
 import { Heart, MessageCircle, Bookmark, Send, BadgeCheck } from "lucide-react";
 import Image from "next/image";
-import { useState, useRef, TouchEvent } from "react";
+import { useState, useRef, TouchEvent, useEffect } from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import LucasProfile from "@/assets/lucas-perfil.png";
 import RezendeProfile from "@/assets/rezende-profile.png";
@@ -30,11 +30,9 @@ export default function InstagramCarouselComponent() {
 
   const handleTouchMove = (e: TouchEvent) => {
     if (!isSwiping) return;
-
     touchEndX.current = e.touches[0].clientX;
     const diff = touchStartX.current - touchEndX.current;
 
-    // Prevent swiping left on the first slide or right on the last slide
     if (
       (currentSlide === 0 && diff < 0) ||
       (currentSlide === carouselImages.length - 1 && diff > 0)
@@ -42,7 +40,6 @@ export default function InstagramCarouselComponent() {
       setSwipeOffset(0);
       return;
     }
-
     setSwipeOffset(diff);
   };
 
@@ -57,7 +54,6 @@ export default function InstagramCarouselComponent() {
         setCurrentSlide(currentSlide - 1);
       }
     }
-
     setSwipeOffset(0);
   };
 
@@ -88,7 +84,8 @@ export default function InstagramCarouselComponent() {
               <Image
                 src={image}
                 alt={`Post image ${index + 1}`}
-                fill
+                width={500}
+                height={625}
                 className="object-cover"
               />
             </div>
