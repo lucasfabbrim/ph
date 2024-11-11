@@ -134,7 +134,13 @@ export default function InstagramCarouselComponent() {
             <span className="font-semibold">outras pessoas</span>
           </span>
         </div>
-        <div className="text-xs text-zinc-400 mt-1 font-light">
+        <span className="text-sm font-semibold text-white flex items-center gap-1">
+          oordonhas
+          <span className="text-sm font-light text-white">
+            Off season... Continue!
+          </span>
+        </span>
+        <div className="text-xs text-zinc-400 mt-3 font-light">
           28 de janeiro
         </div>
       </div>
