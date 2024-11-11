@@ -86,9 +86,9 @@ export default function InstagramCarouselComponent() {
                 alt={`Post image ${index + 1}`}
                 width={500}
                 height={625}
-                className="object-cover"
+                className="object-cover rounded-[10px]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/30" />
             </div>
           ))}
         </div>
@@ -139,16 +139,13 @@ export default function InstagramCarouselComponent() {
         <div className="flex items-center gap-2 mt-2">
           <div className="flex -space-x-2">
             <Avatar className="w-6 h-6 border-2 border-black">
-              <AvatarImage src={NotePerfil.src} alt="@lari_briski" />
-              <AvatarFallback>LB</AvatarFallback>
+              <AvatarImage src={NotePerfil.src} alt="@noteplanning" />
             </Avatar>
             <Avatar className="w-6 h-6 border-2 border-black">
-              <AvatarImage src={LucasProfile.src} alt="@user2" />
-              <AvatarFallback>U2</AvatarFallback>
+              <AvatarImage src={LucasProfile.src} alt="@lucasmendesss_10" />
             </Avatar>
             <Avatar className="w-6 h-6 border-2 border-black">
-              <AvatarImage src={RezendeProfile.src} alt="@user3" />
-              <AvatarFallback>U3</AvatarFallback>
+              <AvatarImage src={RezendeProfile.src} alt="@gz.rzd" />
             </Avatar>
           </div>
           <span className="text-sm">
