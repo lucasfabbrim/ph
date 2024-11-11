@@ -20,8 +20,7 @@ import Creatina from "@/assets/creatina.png";
 import InstagramCarouselComponent from "@/components/instagram";
 
 // Importando os ícones SVG diretamente
-import InstagramIcon from "@/assets/icons/instagram.svg";
-import WhatsAppIcon from "@/assets/icons/whatsapp.svg";
+import YoutubeIcon from "@/assets/icons/youtube.svg";
 import TikTokIcon from "@/assets/icons/titkok.svg";
 import SpotifyIcon from "@/assets/icons/spotify.svg";
 import Copiando from "@/assets/icons/copiando.svg";
@@ -62,14 +61,14 @@ export default function Home() {
           <div className="flex justify-center gap-3 pb-10">
             {[
               {
-                src: InstagramIcon,
-                alt: "Instagram Icon",
-                href: "https://instagram.com/oordonhas",
-              },
-              {
                 src: TikTokIcon,
                 alt: "TikTok Icon",
                 href: "https://tiktok.com/oordonhas",
+              },
+              {
+                src: YoutubeIcon,
+                alt: "Instagram Icon",
+                href: "https://instagram.com/oordonhas",
               },
               {
                 src: SpotifyIcon,
