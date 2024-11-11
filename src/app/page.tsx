@@ -46,7 +46,7 @@ export default function Home() {
       .then(() => {
         toast({
           className: "bg-zinc-900 rounded-[10px] text-white border-none ",
-          title: "Perfeito! Copiado com sucesso!",
+          title: "Perfeito! Link copiado.",
           description: "Agora você pode colar o link onde desejar.",
           duration: 1000,
         });
@@ -57,7 +57,7 @@ export default function Home() {
   };
 
   if (!isClient) {
-    return null; // Retorna null no servidor, aguardando renderização no cliente
+    return null;
   }
 
   return (
@@ -95,17 +95,17 @@ export default function Home() {
               {
                 src: TikTokIcon,
                 alt: "TikTok Icon",
-                href: "https://tiktok.com/oordonhas",
+                href: "https://www.tiktok.com/@ph.ordonhas?_t=8rJWoCqgYum&_r=1",
               },
               {
                 src: YoutubeIcon,
                 alt: "Instagram Icon",
-                href: "https://instagram.com/oordonhas",
+                href: "https://www.youtube.com/@phelipiordonhas",
               },
               {
                 src: SpotifyIcon,
                 alt: "Spotify Icon",
-                href: "https://spotify.com/oordonhas",
+                href: "https://open.spotify.com/playlist/4dUc4S9Afj0odPGEBgg693?si=avgxReqnSyquckcD5XUkXw&pi=u-T97xyrc6TEy8&nd=1&dlsi=002771b6ab0a4c52",
               },
             ].map((product, index) => (
               <a
