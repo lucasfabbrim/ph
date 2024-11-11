@@ -147,7 +147,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-4 mr-3">
                   <Link href="https://www.instagram.com/noteplanning">
-                    <InstagramIcon className="text-white" />
+                    <InstagramIcon className="text-black fill-white" />
                   </Link>
                 </div>
               </div>
