@@ -111,7 +111,7 @@ export default function InstagramCarouselComponent() {
             onClick={() => setIsSaved(!isSaved)}
             className="hover:text-zinc-300 transition-colors"
           >
-            <Bookmark className={`w-6 h-6 ${!isSaved ? "fill-current" : ""}`} />
+            <Bookmark className={`w-5 h-5 ${!isSaved ? "fill-current" : ""}`} />
           </button>
         </div>
         <div className="flex items-center gap-2 mt-2">
