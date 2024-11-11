@@ -86,7 +86,7 @@ export default function InstagramCarouselComponent() {
 
       <div className="p-4">
         <div className="flex justify-between mb-4">
-          <div className="flex gap-4">
+          <div className="flex gap-3">
             <button
               onClick={() => setIsLiked(!isLiked)}
               className="hover:text-zinc-300 transition-colors flex flex-row gap-1.5 items-center"
