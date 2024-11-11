@@ -68,7 +68,7 @@ export default function InstagramCarouselComponent() {
       </div>
 
       <div
-        className="relative aspect-[4/5] bg-zinc-800 overflow-hidden"
+        className="relative aspect-[4/5] bg-transparent overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
