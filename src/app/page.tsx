@@ -132,10 +132,10 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-4 mr-3">
                     <Link key={product.id} href={product.link}>
-                      <Copiando className="w-4 h-4" />
+                      <Copiando className="w-5 h-5" />
                     </Link>
                     <Link key={product.id + 1} href={product.link}>
-                      <ShoppingCart className="w-5 h-5 text-white fill-white" />
+                      <ShoppingCart className="w-6 h-6 text-white fill-white" />
                     </Link>
                   </div>
                 </div>
