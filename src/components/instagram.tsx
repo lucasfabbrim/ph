@@ -2,8 +2,8 @@
 
 import { Heart, MessageCircle, Bookmark, Send, BadgeCheck } from "lucide-react";
 import Image from "next/image";
-import { useState, useRef, TouchEvent, useEffect } from "react";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { useState, useRef, TouchEvent } from "react";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import LucasProfile from "@/assets/lucas-perfil.png";
 import RezendeProfile from "@/assets/rezende-profile.png";
 import NotePerfil from "@/assets/note-perfil.png";

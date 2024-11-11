@@ -1,16 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Instagram,
-  Music2,
-  Crown,
-  Copy,
-  ArrowRight,
-  BadgeCheck,
-} from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Crown, Copy, ArrowRight, BadgeCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,7 +14,6 @@ import InstagramPhoto from "@/assets/icons/instagram.png";
 import TikTokPhoto from "@/assets/icons/tik-tok.png";
 import WhatsAppPhoto from "@/assets/icons/social.png";
 import SpotifyPhoto from "@/assets/icons/spotify.png";
-import Carousel from "@/components/carousel";
 import InstagramCarouselComponent from "@/components/instagram";
 
 export default function Home() {
@@ -46,7 +37,9 @@ export default function Home() {
                 Phelipi Ordonhas{" "}
                 <BadgeCheck className="fill-[#009CEF] text-black" size={28} />
               </h1>
-              <p className="text-zinc-500 font-light">@oordonhas</p>
+              <p className="text-zinc-400 font-light text-sm -mt-0.5">
+                @oordonhas
+              </p>
             </div>
           </div>
 
@@ -94,7 +87,7 @@ export default function Home() {
           </div>
 
           {/* Excellence Card */}
-          <div className="space-y-3 border-b border-b-zinc-900 pb-4 mx-6 pt-4">
+          <div className="space-y-3 border-b border-b-zinc-900 pb-8 mx-6 pt-6">
             <Card className="bg-white/5 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16">
               <p className="font-light text-base text-white flex flex-row items-center gap-2 text-center">
                 <Crown size={20} className="fill-white" />
@@ -104,21 +97,28 @@ export default function Home() {
           </div>
 
           {/* Product Cards */}
-          <div className="space-y-4 mx-6 pb-6 border-b border-b-zinc-900">
+          <div className="space-y-5 mx-6 pb-10 border-b border-b-zinc-900 pt-4">
             {[
-              { name: "Creatina monohidratada", src: Creatina },
-              { name: "Whey Protein concentrado", src: Whey },
-              { name: "Creatina monohidratada", src: Creatina },
-              { name: "Whey Protein concentrado", src: Whey },
+              {
+                id: 1,
+                name: "Creatina",
+                src: Creatina,
+                link: "",
+              },
+              { id: 2, name: "Whey Protein", src: Whey, link: "" },
+              {
+                id: 3,
+                name: "Pré-treino",
+                src: Creatina,
+                link: "",
+              },
+              { id: 4, name: "BCAA", src: Whey, link: "" },
             ].map((product, index) => (
               <Card
                 key={index}
                 className="bg-white/5 border-none hover:bg-zinc-800/90 transition-colors"
               >
-                <Button
-                  variant="ghost"
-                  className="w-full justify-between p-4 h-auto hover:bg-transparent"
-                >
+                <div className="w-full justify-between p-4 h-auto flex items-center">
                   <div className="flex items-center gap-4">
                     <div className="relative w-12 h-12 rounded-md overflow-hidden">
                       <Image
@@ -133,18 +133,22 @@ export default function Home() {
                         {product.name}
                       </p>
                       <div className="flex items-center gap-2">
-                        <p className="text-sm text-zinc-400 font-light">
-                          Utilize Cupom:{" "}
-                          <span className="font-semibold">PH</span>
+                        <p className="text-xs pt-0.5 text-zinc-400 font-light">
+                          Ganhe desconto, use cupom:{" "}
+                          <span className="font-semibold text-white">PH</span>
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <Copy className="w-10 h-10 text-white" />
-                    <ArrowRight className="w-10 h-10 text-white" />
+                  <div className="flex items-center gap-4">
+                    <Link key={product.id} href={product.link}>
+                      <Copy className="w-5 h-5 text-white" />
+                    </Link>
+                    <Link key={product.id + 1} href={product.link}>
+                      <ArrowRight className="w-5 h-5 text-white" />
+                    </Link>
                   </div>
-                </Button>
+                </div>
               </Card>
             ))}
           </div>
