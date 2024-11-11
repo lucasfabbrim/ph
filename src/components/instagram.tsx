@@ -78,7 +78,7 @@ export default function InstagramCarouselComponent() {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`w-1.5 h-1.5 rounded-full ${
-              index === currentSlide ? "bg-blue-400 w-2" : "bg-zinc-600"
+              index === currentSlide ? "bg-[#009CEF]" : "bg-zinc-600"
             }`}
           />
         ))}
