@@ -37,7 +37,6 @@ export default function Home() {
               <div>
                 <h1 className="text-3xl font-bold flex items-center justify-center gap-3">
                   Phelipi Ordonhas{" "}
-                  <BadgeCheck className="fill-[#009CEF] text-black" size={28} />
                 </h1>
                 <p className="text-zinc-400 text-sm -mt-0.5">@oordonhas</p>
               </div>
@@ -119,13 +118,13 @@ export default function Home() {
                       />
                     </div>
                     <div className="text-left">
-                      <p className="font-bold text-sm text-white">
+                      <p className="font-semibold text-sm text-white/90">
                         {product.name}
                       </p>
                       <div className="flex items-center gap-2">
-                        <p className="text-sm pt-0.5 text-zinc-300">
+                        <p className="text-xs pt-0.5 text-zinc-400">
                           Use Cupom:{" "}
-                          <span className="font-semibold text-white">PH</span>
+                          <span className="font-medium text-zinc-300">PH</span>
                         </p>
                       </div>
                     </div>
