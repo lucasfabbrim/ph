@@ -1,8 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Crown, Copy, ArrowRight, BadgeCheck } from "lucide-react";
+import { Crown, BadgeCheck, ShoppingCart, Files, Copy } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,6 +16,7 @@ import InstagramIcon from "@/assets/icons/instagram.svg";
 import WhatsAppIcon from "@/assets/icons/whatsapp.svg";
 import TikTokIcon from "@/assets/icons/titkok.svg";
 import SpotifyIcon from "@/assets/icons/spotify.svg";
+import Copiando from "@/assets/icons/copiando.svg";
 
 export default function Home() {
   return (
@@ -32,7 +32,7 @@ export default function Home() {
               className="w-full h-full lg:h-[550px] object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
             <div className="absolute bottom-4 left-6 items-center">
               <h1 className="text-3xl font-bold flex items-center gap-3">
                 Phelipi Ordonhas{" "}
@@ -130,10 +130,10 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-4 mr-3">
                     <Link key={product.id} href={product.link}>
-                      <Copy className="w-5 h-5 text-white" />
+                      <Copiando className="w-4 h-4" />
                     </Link>
                     <Link key={product.id + 1} href={product.link}>
-                      <ArrowRight className="w-5 h-5 text-white" />
+                      <ShoppingCart className="w-5 h-5 text-white fill-white" />
                     </Link>
                   </div>
                 </div>
