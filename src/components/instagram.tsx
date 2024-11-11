@@ -58,9 +58,9 @@ export default function InstagramCarouselComponent() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-black text-white border-b border-zinc-800 pb-4">
-      <div className="flex items-center p-4">
-        <Avatar className="h-6 w-6 border border-zinc-600">
+    <div className="max-w-md mx-auto bg-black text-white border-b border-zinc-800 pb-4 -mt-5">
+      <div className="flex items-center p-4 border-zinc-600 border-b border-b-zinc-900">
+        <Avatar className="h-6 w-6 border ">
           <AvatarImage src={PHProfile.src} alt="Profile picture" />
         </Avatar>
         <span className="ml-2 font-semibold text-sm">oordonhas</span>
@@ -89,7 +89,7 @@ export default function InstagramCarouselComponent() {
                 alt={`Post image ${index + 1}`}
                 width={500}
                 height={625}
-                className="object-cover rounded-[10px]"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/30" />
             </div>
