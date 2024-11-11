@@ -33,12 +33,14 @@ export default function Home() {
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-            <div className="absolute bottom-4 left-6 items-center">
-              <h1 className="text-3xl font-bold flex items-center gap-3">
-                Phelipi Ordonhas{" "}
-                <BadgeCheck className="fill-[#009CEF] text-black" size={28} />
-              </h1>
-              <p className="text-zinc-400 text-sm -mt-0.5">@oordonhas</p>
+            <div className="absolute bottom-6 flex justify-center items-center w-full text-center">
+              <div>
+                <h1 className="text-3xl font-bold flex items-center justify-center gap-3">
+                  Phelipi Ordonhas{" "}
+                  <BadgeCheck className="fill-[#009CEF] text-black" size={28} />
+                </h1>
+                <p className="text-zinc-400 text-sm -mt-0.5">@oordonhas</p>
+              </div>
             </div>
           </div>
 
