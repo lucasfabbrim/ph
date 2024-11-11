@@ -154,20 +154,6 @@ export default function Home() {
           <div className="mx-6">
             <InstagramCarouselComponent />
           </div>
-          <div className="mx-6 flex flex-col justify-center text-center pb-8 gap-6 text-xs">
-            <div className="text-zinc-100">
-              Garanta seu site hoje e destaque-se como{" "}
-              <span className="font-bold">Phelipi Ordonhas</span>. Seu sucesso
-              online começa agora!
-            </div>
-            <Button
-              variant="default"
-              className="bg-white/5 text-sm h-10 text-white hover:bg-white/10 rounded-[25px] flex items-center gap-1"
-            >
-              <span>Falar com especialista</span>
-              <ChevronRight size={10} strokeWidth="3" />
-            </Button>
-          </div>
         </section>
       </main>
     </div>
