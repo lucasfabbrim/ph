@@ -43,8 +43,7 @@ export default function Home() {
       .writeText(link)
       .then(() => {
         toast({
-          className:
-            "bg-black lg:bg-zinc-900/60 rounded-[10px] text-white border-none ",
+          className: "bg-zinc-900/60 rounded-[10px] text-white border-none ",
           title: "Perfeito! Copiado com sucesso!",
           description: "Agora você pode colar o link onde desejar.",
           duration: 1000,
