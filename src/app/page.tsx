@@ -17,6 +17,7 @@ import WhatsAppIcon from "@/assets/icons/whatsapp.svg";
 import TikTokIcon from "@/assets/icons/titkok.svg";
 import SpotifyIcon from "@/assets/icons/spotify.svg";
 import Copiando from "@/assets/icons/copiando.svg";
+import Cupom from "@/assets/icons/cupom.svg";
 
 export default function Home() {
   return (
@@ -118,13 +119,13 @@ export default function Home() {
                       />
                     </div>
                     <div className="text-left">
-                      <p className="font-semibold text-sm text-white/90">
+                      <p className="font-semibold text-base text-white">
                         {product.name}
                       </p>
                       <div className="flex items-center gap-2">
-                        <p className="text-xs pt-0.5 text-zinc-400">
-                          Use Cupom:{" "}
-                          <span className="font-medium text-zinc-300">PH</span>
+                        <p className="text-sm pt-1 text-white font-medium flex items-center gap-2">
+                          <Cupom className="w-4 h-4 " />
+                          PH
                         </p>
                       </div>
                     </div>
