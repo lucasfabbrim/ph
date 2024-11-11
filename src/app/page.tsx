@@ -151,7 +151,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mx-6">
+          <div className="mx-6 pb-20">
             <InstagramCarouselComponent />
           </div>
         </section>
