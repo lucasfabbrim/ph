@@ -17,36 +17,19 @@ import Link from "next/link";
 import Profile from "@/assets/header.png";
 import Whey from "@/assets/whey.png";
 import Creatina from "@/assets/creatina.png";
-import Photo from "@/assets/card-1.jpeg";
-import Photo2 from "@/assets/card-2.jpeg";
 
 import InstagramPhoto from "@/assets/icons/instagram.png";
 import TikTokPhoto from "@/assets/icons/tik-tok.png";
 import WhatsAppPhoto from "@/assets/icons/social.png";
 import SpotifyPhoto from "@/assets/icons/spotify.png";
+import Carousel from "@/components/carousel";
 
 export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = [
-    {
-      src: Photo,
-      alt: "Instagram content",
-    },
-    { src: Photo2, alt: "Music content" },
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
-    }, 5000); // Change slide every 5 seconds
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="bg-black min-h-screen text-white">
       <main className="container w-full mx-auto md:max-w-lg md:items-center">
         <section className="space-y-6 pt-[0.5px] lg:pt-3">
+          {/* Profile Image */}
           <div className="relative overflow-hidden">
             <Image
               src={Profile}
@@ -66,6 +49,7 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Social Links */}
           <div className="flex justify-center gap-4">
             {[
               {
@@ -108,6 +92,7 @@ export default function Home() {
             ))}
           </div>
 
+          {/* Excellence Card */}
           <div className="space-y-3 border-b border-b-zinc-900 pb-4 mx-2 pt-4">
             <Card className="bg-white/5 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16">
               <p className="font-light text-base text-white flex flex-row items-center gap-2 text-center">
@@ -117,6 +102,7 @@ export default function Home() {
             </Card>
           </div>
 
+          {/* Product Cards */}
           <div className="space-y-4 mx-2 pb-6 border-b border-b-zinc-900">
             {[
               { name: "Creatina monohidratada", src: Creatina },
@@ -161,6 +147,7 @@ export default function Home() {
               </Card>
             ))}
           </div>
+          <Carousel />
         </section>
       </main>
     </div>
