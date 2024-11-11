@@ -51,8 +51,8 @@ export default function Home() {
                 <p className="text-zinc-400 text-sm -mt-0.5 flex items-center justify-center">
                   @oordonhas{" "}
                   <BadgeCheck
-                    className="fill-[#009CEF] text-black ml-1 mt-0.5"
-                    size={14}
+                    className="fill-[#009CEF] text-black ml-0.5 mt-0.5"
+                    size={15}
                   />
                 </p>
               </div>
@@ -94,9 +94,8 @@ export default function Home() {
 
           {/* Excellence Card */}
           <div className="space-y-3 border-b border-b-zinc-900 pb-12 mx-6 pt-6 border-t border-t-zinc-900">
-            <h1 className="items-center text-center text-xl pb-5 font-semibold pt-4 flex flex-col">
+            <h1 className="items-center text-center text-xl pb-3 font-semibold pt-4 ">
               Organização
-              <ChevronDown size={22} className="mt-3 text-zinc-500" />
             </h1>
             <Card className="bg-neutral-900/60 border-none rounded-[25px]">
               <div className="w-full justify-between p-4 h-auto flex items-center">
@@ -134,9 +133,8 @@ export default function Home() {
           </div>
 
           <div className="space-y-5 mx-6 pb-10 border-b border-b-zinc-900 pt-4">
-            <h1 className="items-center text-center text-xl pb-4 font-semibold flex flex-col">
+            <h1 className="items-center text-center text-xl pb-2 font-semibold">
               Suplementação
-              <ChevronDown size={22} className="mt-3 text-zinc-500" />
             </h1>
             {[
               {
