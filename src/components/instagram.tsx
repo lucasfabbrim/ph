@@ -64,7 +64,7 @@ export default function InstagramCarouselComponent() {
           <AvatarImage src={PHProfile.src} alt="Profile picture" />
         </Avatar>
         <span className="ml-2 font-semibold text-sm">oordonhas</span>
-        <BadgeCheck className="fill-[#009CEF] text-black ml-1 mt-1" size={15} />
+        <BadgeCheck className="fill-[#009CEF] text-black ml-1" size={16} />
       </div>
 
       <div
