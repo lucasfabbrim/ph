@@ -1,7 +1,14 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import { Crown, BadgeCheck, ShoppingCart, Files, Copy } from "lucide-react";
+import {
+  Crown,
+  BadgeCheck,
+  ShoppingCart,
+  Files,
+  Copy,
+  ChevronRight,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,6 +25,7 @@ import TikTokIcon from "@/assets/icons/titkok.svg";
 import SpotifyIcon from "@/assets/icons/spotify.svg";
 import Copiando from "@/assets/icons/copiando.svg";
 import Cupom from "@/assets/icons/cupom.svg";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -145,6 +153,20 @@ export default function Home() {
 
           <div className="mx-6">
             <InstagramCarouselComponent />
+          </div>
+          <div className="mx-6 flex flex-col justify-center text-center pb-8 gap-6">
+            <div className="text-zinc-100">
+              Garanta seu site hoje e destaque-se como{" "}
+              <span className="font-bold">Phelipi Ordonhas</span>. Seu sucesso
+              online começa agora!
+            </div>
+            <Button
+              variant="default"
+              className="bg-white/5 text-base h-10 text-white hover:bg-white/10 rounded-[25px] flex items-center gap-1"
+            >
+              <span>Falar com especialista</span>
+              <ChevronRight size={10} strokeWidth="3" className="pt-1" />
+            </Button>
           </div>
         </section>
       </main>
