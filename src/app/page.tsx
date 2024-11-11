@@ -189,11 +189,10 @@ export default function Home() {
           <div className="mx-6 ">
             <InstagramCarouselComponent />
           </div>
-          <div className="mx-6 justify-center flex flex-col pb-4 pt-4 items-center text-center">
-            <h1 className="text-sm text-zinc-500">Termos</h1>
+          <div className="mx-6 justify-center flex flex-col pb-4 items-center text-center">
             <a
               href="https://api.whatsapp.com/send?phone=5519993356780&text=Ol%C3%A1,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."
-              className="text-xs text-zinc-500 pt-1"
+              className="text-xs text-zinc-400 pt-1"
             >
               Desenvolvido por Lucas Mendes.
             </a>
