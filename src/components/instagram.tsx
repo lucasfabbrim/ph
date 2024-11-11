@@ -77,8 +77,8 @@ export default function InstagramCarouselComponent() {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-2 h-2 rounded-full ${
-              index === currentSlide ? "bg-blue-600 w-2" : "bg-zinc-500"
+            className={`w-1.5 h-1.5 rounded-full ${
+              index === currentSlide ? "bg-blue-400 w-2" : "bg-zinc-600"
             }`}
           />
         ))}
@@ -130,17 +130,17 @@ export default function InstagramCarouselComponent() {
             </Avatar>
           </div>
           <span className="text-sm">
-            Curtido por <span className="font-semibold">lucasmendes</span> e{" "}
+            Curtido por <span className="font-semibold">mendes</span> e{" "}
             <span className="font-semibold">outras pessoas</span>
           </span>
         </div>
         <span className="text-sm font-semibold text-white flex items-center gap-1">
           oordonhas
-          <span className="text-sm font-light text-white">
+          <span className="text-sm font-normal text-white">
             Off season... Continue!
           </span>
         </span>
-        <div className="text-xs text-zinc-400 mt-3 font-light">
+        <div className="text-xs text-zinc-400 mt-3 font-normal">
           28 de janeiro
         </div>
       </div>
