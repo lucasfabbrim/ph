@@ -60,7 +60,7 @@ export default function InstagramCarouselComponent() {
   return (
     <div className="max-w-md mx-auto bg-black text-white border-b border-zinc-800 pb-4 -mt-5">
       <div className="flex items-center p-4 border-zinc-600 border-b border-b-zinc-950">
-        <Avatar className="h-6 w-6 border ">
+        <Avatar className="h-6 w-6 border border-zinc-600">
           <AvatarImage src={PHProfile.src} alt="Profile picture" />
         </Avatar>
         <span className="ml-2 font-semibold text-sm">oordonhas</span>
