@@ -103,7 +103,7 @@ export default function Home() {
                   </div>
                   <div className="text-left">
                     <p className="font-medium text-base text-white">
-                      Note Private
+                      Note Planning
                     </p>
                     <div className="flex items-center gap-2">
                       <p className="text-sm text-white font-normal flex items-center gap-1.5 ml-0.5 pt-.5">
