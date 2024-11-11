@@ -165,7 +165,7 @@ export default function Home() {
               className="bg-white/5 text-sm h-10 text-white hover:bg-white/10 rounded-[25px] flex items-center gap-1"
             >
               <span>Falar com especialista</span>
-              <ChevronRight size={10} strokeWidth="3" className="pt-1" />
+              <ChevronRight size={10} strokeWidth="3" />
             </Button>
           </div>
         </section>
