@@ -121,15 +121,15 @@ export default function InstagramCarouselComponent() {
                   !isLiked ? "fill-red-600 stroke-red-600" : ""
                 }`}
               />
-              <span className="font-semibold text-sm">88,6 mil</span>
+              <span className="font-semibold text-xs">88,6 mil</span>
             </button>
             <button className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1">
               <MessageCircle className="w-5 h-5" />
-              <span className="font-semibold text-sm">858</span>
+              <span className="font-semibold text-xs">858</span>
             </button>
             <button className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1">
               <Send className="w-5 h-5" />
-              <span className="font-semibold text-sm">3,6 mil</span>
+              <span className="font-semibold text-xs">3,6 mil</span>
             </button>
           </div>
           <button
@@ -141,24 +141,24 @@ export default function InstagramCarouselComponent() {
         </div>
         <div className="flex items-center gap-2 mt-2">
           <div className="flex -space-x-2">
-            <Avatar className="w-6 h-6 border-2 border-black">
+            <Avatar className="w-5 h-5 border-2 border-black">
               <AvatarImage src={NotePerfil.src} alt="@noteplanning" />
             </Avatar>
-            <Avatar className="w-6 h-6 border-2 border-black">
+            <Avatar className="w-5 h-5 border-2 border-black">
               <AvatarImage src={LucasProfile.src} alt="@lucasmendesss_10" />
             </Avatar>
-            <Avatar className="w-6 h-6 border-2 border-black">
+            <Avatar className="w-5 h-5 border-2 border-black">
               <AvatarImage src={RezendeProfile.src} alt="@gz.rzd" />
             </Avatar>
           </div>
-          <span className="text-sm">
+          <span className="text-xs">
             Curtido por <span className="font-semibold">mendes</span> e{" "}
             <span className="font-semibold">outras pessoas</span>
           </span>
         </div>
-        <span className="text-sm font-semibold text-white flex items-center gap-1">
+        <span className="text-xs font-semibold text-white flex items-center gap-1">
           oordonhas
-          <span className="text-sm font-normal text-white">
+          <span className="text-xs font-normal text-white">
             Off season... Continue!
           </span>
         </span>
