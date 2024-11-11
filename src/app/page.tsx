@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react"; // Importar useState para gerenciar o estado
 import { Card } from "@/components/ui/card";
 import {
   Crown,
@@ -12,17 +13,16 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
 import Profile from "@/assets/header.png";
 import Whey from "@/assets/whey.png";
 import Creatina from "@/assets/creatina.png";
 import Arginina from "@/assets/arginine.png";
 import Glutamina from "@/assets/glutanima.png";
 import BCAA from "@/assets/bcaa.png";
-
 import InstagramCarouselComponent from "@/components/instagram";
 
-// Importando os ícones SVG diretamente
+// Importando o Toast hook
+import { useToast } from "@/hooks/use-toast"; // Seu hook customizado para toast
 import YoutubeIcon from "@/assets/icons/youtube.svg";
 import TikTokIcon from "@/assets/icons/titkok.svg";
 import SpotifyIcon from "@/assets/icons/spotify.svg";
@@ -31,6 +31,34 @@ import Cupom from "@/assets/icons/cupom.svg";
 import NotePerfil from "@/assets/note-perfil.png";
 
 export default function Home() {
+  const { toast } = useToast();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const handleCopy = (link: string) => {
+    navigator.clipboard
+      .writeText(link)
+      .then(() => {
+        toast({
+          className:
+            "bg-black lg:bg-zinc-900/60 rounded-[10px] text-white border-none ",
+          title: "Perfeito! Copiado com sucesso!",
+          description: "Agora você pode colar o link onde desejar.",
+          duration: 1000,
+        });
+      })
+      .catch((err) => {
+        console.error("Erro ao copiar o link:", err);
+      });
+  };
+
+  if (!isClient) {
+    return null; // Retorna null no servidor, aguardando renderização no cliente
+  }
+
   return (
     <div className="bg-black min-h-screen text-white">
       <main className="container w-full mx-auto md:max-w-lg md:items-center">
@@ -111,16 +139,21 @@ export default function Home() {
                     </p>
                     <div className="flex items-center gap-2">
                       <p className="text-sm text-white font-normal flex items-center gap-1.5 ml-0.5 pt-.5">
-                        <Cupom className="w-4 h-4 " />
-                        PH
+                        <Cupom className="w-4 h-4 " /> PH
                       </p>
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 mr-3">
-                  <Link href="#">
+                  <button
+                    onClick={() =>
+                      handleCopy(
+                        "https://www.gsuplementos.com.br/creatina-100g-creapure-growth-supplements-p985927",
+                      )
+                    }
+                  >
                     <Copiando className="w-5 h-5" />
-                  </Link>
+                  </button>
                   <Link href="#">
                     <ShoppingCart className="w-6 h-6 text-white fill-white" />
                   </Link>
@@ -129,6 +162,7 @@ export default function Home() {
             </Card>
           </div>
 
+          {/* Outros Produtos */}
           <div className="space-y-5 mx-6 pb-10 border-b border-b-zinc-900 pt-4">
             <h1 className="items-center text-center text-xl pb-2 font-semibold">
               Suplementação
@@ -138,22 +172,32 @@ export default function Home() {
                 id: 1,
                 name: "Creatina",
                 src: Creatina,
-                link: "",
+                link: "https://www.gsuplementos.com.br/creatina-100g-creapure-growth-supplements-p985927",
               },
-              { id: 2, name: "Whey Protein", src: Whey, link: "" },
+              {
+                id: 2,
+                name: "Whey Protein",
+                src: Whey,
+                link: "https://www.gsuplementos.com.br/whey-protein-concentrado-1kg-growth-supplements-p985936",
+              },
               {
                 id: 3,
-                name: "Arginina",
-                src: Arginina,
-                link: "",
+                name: "Glutamina",
+                src: Glutamina,
+                link: "https://www.gsuplementos.com.br/l-glutamina-250g-growth-supplements-p985843",
               },
               {
                 id: 4,
                 name: "Arginina",
                 src: Arginina,
-                link: "",
+                link: "https://www.gsuplementos.com.br/arginina-powder-250gr-growth-supplements",
               },
-              { id: 5, name: "BCAA", src: BCAA, link: "" },
+              {
+                id: 5,
+                name: "BCAA",
+                src: BCAA,
+                link: "https://www.gsuplementos.com.br/bcaa-1011-120-comprimidos-growth-supplements",
+              },
             ].map((product, index) => (
               <Card
                 key={index}
@@ -172,23 +216,19 @@ export default function Home() {
                     <div className="text-left">
                       <p className="font-medium text-base text-white flex items-center gap-2">
                         {product.name}
-                        <span className="text-xs text-zinc-400 font-normal">
-                          (Recomendação)
-                        </span>
                       </p>
                       <div className="flex items-center gap-2">
                         <p className="text-sm text-white font-normal flex items-center gap-1.5 ml-0.5 pt-.5">
-                          <Cupom className="w-4 h-4 " />
-                          PH
+                          <Cupom className="w-4 h-4 " /> PH
                         </p>
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-4 mr-3">
-                    <Link key={product.id} href={product.link}>
+                    <button onClick={() => handleCopy(product.link)}>
                       <Copiando className="w-5 h-5" />
-                    </Link>
-                    <Link key={product.id + 1} href={product.link}>
+                    </button>
+                    <Link href={product.link}>
                       <ShoppingCart className="w-6 h-6 text-white fill-white" />
                     </Link>
                   </div>
@@ -197,9 +237,12 @@ export default function Home() {
             ))}
           </div>
 
+          {/* Instagram Carousel */}
           <div className="mx-6 ">
             <InstagramCarouselComponent />
           </div>
+
+          {/* Mensagem de rodapé */}
           <div className="mx-6 justify-center flex flex-col pb-4 items-center text-center">
             <a
               href="https://api.whatsapp.com/send?phone=5519993356780&text=Ol%C3%A1,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."
