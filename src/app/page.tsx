@@ -23,6 +23,7 @@ import TikTokPhoto from "@/assets/icons/tik-tok.png";
 import WhatsAppPhoto from "@/assets/icons/social.png";
 import SpotifyPhoto from "@/assets/icons/spotify.png";
 import Carousel from "@/components/carousel";
+import InstagramCarouselComponent from "@/components/instagram";
 
 export default function Home() {
   return (
@@ -93,7 +94,7 @@ export default function Home() {
           </div>
 
           {/* Excellence Card */}
-          <div className="space-y-3 border-b border-b-zinc-900 pb-4 mx-6 pt-4">
+          <div className="space-y-3 border-b border-b-zinc-900 pb-4 mx-2 pt-4">
             <Card className="bg-white/5 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16">
               <p className="font-light text-base text-white flex flex-row items-center gap-2 text-center">
                 <Crown size={20} className="fill-white" />
@@ -103,7 +104,7 @@ export default function Home() {
           </div>
 
           {/* Product Cards */}
-          <div className="space-y-4 mx-6 pb-6 border-b border-b-zinc-900">
+          <div className="space-y-4 mx-2 pb-6 border-b border-b-zinc-900">
             {[
               { name: "Creatina monohidratada", src: Creatina },
               { name: "Whey Protein concentrado", src: Whey },
@@ -147,9 +148,8 @@ export default function Home() {
               </Card>
             ))}
           </div>
-          <div className="mx-2">
-            <Carousel />
-          </div>
+
+          <InstagramCarouselComponent />
         </section>
       </main>
     </div>

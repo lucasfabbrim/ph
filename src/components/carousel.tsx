@@ -5,7 +5,6 @@ import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Photo from "@/assets/card-1.jpeg";
 import Photo2 from "@/assets/card-2.jpeg";
 
@@ -61,24 +60,24 @@ export default function Carousel() {
               </div>
             ))}
           </div>
+          <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2 p-4 z-10">
+            {scrollSnaps.map((_, index) => (
+              <Button
+                key={index}
+                variant="outline"
+                size="icon"
+                className={`w-2 h-2 rounded-full p-0 transition-all duration-300 border-none ${
+                  index === selectedIndex
+                    ? "bg-white scale-125 hover:bg-white/80 w-4"
+                    : "bg-white/70 hover:bg-white/70"
+                }`}
+                onClick={() => scrollTo(index)}
+              >
+                <span className="sr-only">Go to slide {index + 1}</span>
+              </Button>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="flex justify-center gap-2 p-4">
-        {scrollSnaps.map((_, index) => (
-          <Button
-            key={index}
-            variant="outline"
-            size="icon"
-            className={`w-2 h-2 rounded-full p-0 transition-all duration-300 border-none ${
-              index === selectedIndex
-                ? "bg-white scale-125 hover:bg-white/80 w-4"
-                : "bg-white/70 hover:bg-white/70"
-            }`}
-            onClick={() => scrollTo(index)}
-          >
-            <span className="sr-only">Go to slide {index + 1}</span>
-          </Button>
-        ))}
       </div>
     </Card>
   );
