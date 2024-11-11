@@ -10,6 +10,7 @@ import {
   Copy,
   ChevronRight,
   ChevronDown,
+  InstagramIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -143,7 +144,15 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <span className="mr-2 text-sm text-zinc-400">Em breve...</span>
+                <div className="flex items-center gap-4 mr-3">
+                  <span className="mr-2 text-sm text-zinc-400">
+                    Em breve...
+                  </span>
+
+                  <Link href="https://www.instagram.com/noteplanning">
+                    <InstagramIcon className="text-white" />
+                  </Link>
+                </div>
               </div>
             </Card>
           </div>
