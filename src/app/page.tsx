@@ -131,7 +131,7 @@ export default function Home() {
                       </p>
                       <div className="flex items-center gap-2">
                         <p className="text-xs pt-0.5 text-zinc-300">
-                          Ganhe desconto, Cupom:{" "}
+                          Use Cupom:{" "}
                           <span className="font-semibold text-white">PH</span>
                         </p>
                       </div>
