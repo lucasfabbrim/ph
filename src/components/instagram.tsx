@@ -2,7 +2,7 @@
 
 import { Heart, MessageCircle, Bookmark, Send, BadgeCheck } from "lucide-react";
 import Image from "next/image";
-import { useState, useRef, TouchEvent, useEffect } from "react";
+import { useState, useRef, TouchEvent } from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import LucasProfile from "@/assets/lucas-perfil.png";
 import RezendeProfile from "@/assets/rezende-profile.png";
@@ -17,57 +17,49 @@ export default function InstagramCarouselComponent() {
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState(0);
-  const [dragOffset, setDragOffset] = useState(0);
+  const [isSwiping, setIsSwiping] = useState(false);
+  const [swipeOffset, setSwipeOffset] = useState(0);
 
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    setIsDragging(true);
-    setDragStart(e.touches[0].clientX);
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    setIsSwiping(true);
   };
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!isDragging) return;
-    const currentPosition = e.touches[0].clientX;
-    const diff = dragStart - currentPosition;
-    setDragOffset(diff);
+  const handleTouchMove = (e: TouchEvent) => {
+    if (!isSwiping) return;
+
+    touchEndX.current = e.touches[0].clientX;
+    const diff = touchStartX.current - touchEndX.current;
+
+    // Prevent swiping left on the first slide or right on the last slide
+    if (
+      (currentSlide === 0 && diff < 0) ||
+      (currentSlide === carouselImages.length - 1 && diff > 0)
+    ) {
+      setSwipeOffset(0);
+      return;
+    }
+
+    setSwipeOffset(diff);
   };
 
   const handleTouchEnd = () => {
-    setIsDragging(false);
-    if (Math.abs(dragOffset) > 50) {
-      if (dragOffset > 0) {
-        nextSlide();
-      } else {
-        prevSlide();
+    setIsSwiping(false);
+    const diff = touchStartX.current - touchEndX.current;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0 && currentSlide < carouselImages.length - 1) {
+        setCurrentSlide(currentSlide + 1);
+      } else if (diff < 0 && currentSlide > 0) {
+        setCurrentSlide(currentSlide - 1);
       }
     }
-    setDragOffset(0);
-  };
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+    setSwipeOffset(0);
   };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + carouselImages.length) % carouselImages.length,
-    );
-  };
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (carousel) {
-      carousel.style.transition = isDragging
-        ? "none"
-        : "transform 0.3s ease-out";
-      carousel.style.transform = `translateX(${
-        -currentSlide * 100 + (dragOffset / carousel.clientWidth) * 100
-      }%)`;
-    }
-  }, [currentSlide, isDragging, dragOffset]);
 
   return (
     <div className="max-w-md mx-auto bg-black text-white border-b border-zinc-800 pb-4">
@@ -79,17 +71,20 @@ export default function InstagramCarouselComponent() {
         <BadgeCheck className="fill-[#009CEF] text-black ml-1 mt-1" size={15} />
       </div>
 
-      <div className="relative overflow-hidden">
+      <div
+        className="relative aspect-[4/5] bg-zinc-800 overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
-          ref={carouselRef}
-          className="flex"
-          style={{ width: `${carouselImages.length * 100}%` }}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
+          className="flex transition-transform duration-300 ease-out"
+          style={{
+            transform: `translateX(${-currentSlide * 100 + swipeOffset / 4}%)`,
+          }}
         >
           {carouselImages.map((image, index) => (
-            <div key={index} className="relative aspect-[4/5] w-full">
+            <div key={index} className="flex-shrink-0 w-full h-full relative">
               <Image
                 src={image}
                 alt={`Post image ${index + 1}`}
@@ -122,25 +117,25 @@ export default function InstagramCarouselComponent() {
             >
               <Heart
                 className={`w-6 h-6 ${
-                  !isLiked ? "fill-red-600 stroke-red-600" : ""
+                  isLiked ? "fill-red-600 stroke-red-600" : ""
                 }`}
               />
-              <span className="font-semibold text-sm">12,6 mil</span>
+              <span className="font-semibold text-sm">88,6 mil</span>
             </button>
             <button className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1">
               <MessageCircle className="w-5 h-5" />
-              <span className="font-semibold text-sm">128</span>
+              <span className="font-semibold text-sm">858</span>
             </button>
             <button className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1">
               <Send className="w-5 h-5" />
-              <span className="font-semibold text-sm">695</span>
+              <span className="font-semibold text-sm">3,6 mil</span>
             </button>
           </div>
           <button
             onClick={() => setIsSaved(!isSaved)}
             className="hover:text-zinc-300 transition-colors"
           >
-            <Bookmark className={`w-5 h-5 ${!isSaved ? "fill-current" : ""}`} />
+            <Bookmark className={`w-5 h-5 ${isSaved ? "fill-current" : ""}`} />
           </button>
         </div>
         <div className="flex items-center gap-2 mt-2">
