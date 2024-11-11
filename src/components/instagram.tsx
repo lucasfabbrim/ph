@@ -12,9 +12,8 @@ import Photo from "@/assets/card-1.jpeg";
 import Photo2 from "@/assets/card-2.jpeg";
 import Photo3 from "@/assets/card-3.png";
 import Photo4 from "@/assets/card-4.png";
-import Photo5 from "@/assets/card-5.png";
 
-const carouselImages = [Photo, Photo2, Photo3, Photo4, Photo5];
+const carouselImages = [Photo, Photo2, Photo3, Photo4];
 
 export default function InstagramCarouselComponent() {
   const [isLiked, setIsLiked] = useState(false);
