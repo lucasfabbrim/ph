@@ -80,10 +80,7 @@ export default function InstagramCarouselComponent() {
           }}
         >
           {carouselImages.map((image, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-full h-full relative bg-black"
-            >
+            <div key={index} className="flex-shrink-0 w-full h-full relative ">
               <Image
                 src={image}
                 alt={`Post image ${index + 1}`}
@@ -121,15 +118,15 @@ export default function InstagramCarouselComponent() {
                   !isLiked ? "fill-red-600 stroke-red-600" : ""
                 }`}
               />
-              <span className="font-semibold text-sm">88,6 mil</span>
+              <span className="font-semibold text-sm">550,6 mil</span>
             </button>
             <button className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1">
               <MessageCircle className="w-5 h-5" />
-              <span className="font-semibold text-sm">858</span>
+              <span className="font-semibold text-sm">953</span>
             </button>
             <button className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1">
               <Send className="w-5 h-5" />
-              <span className="font-semibold text-sm">3,6 mil</span>
+              <span className="font-semibold text-sm">10,6 mil</span>
             </button>
           </div>
           <button
