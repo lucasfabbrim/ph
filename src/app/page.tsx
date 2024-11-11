@@ -119,11 +119,11 @@ export default function Home() {
                       />
                     </div>
                     <div className="text-left">
-                      <p className="font-semibold text-base text-white">
+                      <p className="font-medium text-base text-white">
                         {product.name}
                       </p>
                       <div className="flex items-center gap-2">
-                        <p className="text-sm text-white font-medium flex items-center gap-2 ml-0.5">
+                        <p className="text-sm text-white font-normal flex items-center gap-2 ml-0.5">
                           <Cupom className="w-4 h-4 " />
                           PH
                         </p>
