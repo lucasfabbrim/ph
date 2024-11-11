@@ -10,11 +10,13 @@ import Profile from "@/assets/header.png";
 import Whey from "@/assets/whey.png";
 import Creatina from "@/assets/creatina.png";
 
-import InstagramPhoto from "@/assets/icons/instagram.png";
-import TikTokPhoto from "@/assets/icons/tik-tok.png";
-import WhatsAppPhoto from "@/assets/icons/social.png";
-import SpotifyPhoto from "@/assets/icons/spotify.png";
 import InstagramCarouselComponent from "@/components/instagram";
+
+// Importando os ícones SVG diretamente
+import InstagramIcon from "@/assets/icons/instagram.svg";
+import WhatsAppIcon from "@/assets/icons/whatsapp.svg";
+import TikTokIcon from "@/assets/icons/titkok.svg";
+import SpotifyIcon from "@/assets/icons/spotify.svg";
 
 export default function Home() {
   return (
@@ -40,46 +42,35 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Social Links */}
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-3">
             {[
               {
-                src: InstagramPhoto,
-                alt: "Instagram Photo",
+                src: InstagramIcon,
+                alt: "Instagram Icon",
                 href: "https://instagram.com/oordonhas",
               },
               {
-                src: WhatsAppPhoto,
-                alt: "WhatsApp Photo",
-                href: "https://instagram.com/oordonhas",
+                src: WhatsAppIcon,
+                alt: "WhatsApp Icon",
+                href: "https://whatsapp.com/oordonhas",
               },
               {
-                src: TikTokPhoto,
-                alt: "TikTok Photo",
-                href: "https://instagram.com/oordonhas",
+                src: TikTokIcon,
+                alt: "TikTok Icon",
+                href: "https://tiktok.com/oordonhas",
               },
               {
-                src: SpotifyPhoto,
-                alt: "Music Photo",
-                href: "https://music.example.com/oordonhas",
+                src: SpotifyIcon,
+                alt: "Spotify Icon",
+                href: "https://spotify.com/oordonhas",
               },
-            ].map((social, index) => (
-              <Link key={index} href={social.href} passHref>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={`rounded-full hover:bg-white/10 transition-opacity`}
-                  aria-label={`Visit ${social.alt} profile`}
-                >
-                  <Image
-                    src={social.src}
-                    alt={social.alt}
-                    width={50}
-                    height={50}
-                    className="object-contain w-full h-full"
-                  />
-                </Button>
-              </Link>
+            ].map((product, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-center rounded-xl text-white transition-colors "
+              >
+                <product.src />
+              </div>
             ))}
           </div>
 
