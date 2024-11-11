@@ -18,6 +18,7 @@ import Whey from "@/assets/whey.png";
 import Creatina from "@/assets/creatina.png";
 import Arginina from "@/assets/arginine.png";
 import Glutamina from "@/assets/glutanima.png";
+import BCAA from "@/assets/bcaa.png";
 
 import InstagramCarouselComponent from "@/components/instagram";
 
@@ -146,7 +147,13 @@ export default function Home() {
                 src: Arginina,
                 link: "",
               },
-              { id: 4, name: "Glutamina", src: Glutamina, link: "" },
+              {
+                id: 4,
+                name: "Arginina",
+                src: Arginina,
+                link: "",
+              },
+              { id: 5, name: "BCAA", src: BCAA, link: "" },
             ].map((product, index) => (
               <Card
                 key={index}
