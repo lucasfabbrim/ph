@@ -77,8 +77,8 @@ export default function Home() {
 
           {/* Excellence Card */}
           <div className="space-y-3 border-b border-b-zinc-900 pb-8 mx-6 pt-6">
-            <Card className="bg-zinc-950/80 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16">
-              <p className="text-sm text-white flex flex-row items-center gap-2 text-center">
+            <Card className="bg-neutral-900/60 border-zinc-900/40 transition-colors w-full flex justify-center items-center p-5 h-16">
+              <p className="text-sm font-medium text-white flex flex-row items-center gap-2 text-center">
                 <Crown size={20} className="fill-yellow-500 text-yellow-500" />
                 Excelência não é um ato, é um hábito.
               </p>
@@ -102,10 +102,7 @@ export default function Home() {
               },
               { id: 4, name: "BCAA", src: Whey, link: "" },
             ].map((product, index) => (
-              <Card
-                key={index}
-                className="bg-white/5 border-none hover:bg-zinc-800/90 transition-colors"
-              >
+              <Card key={index} className="bg-neutral-900/60 border-none">
                 <div className="w-full justify-between p-4 h-auto flex items-center">
                   <div className="flex items-center gap-4">
                     <div className="relative w-12 h-12 rounded-md overflow-hidden">
