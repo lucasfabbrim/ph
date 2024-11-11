@@ -2,7 +2,7 @@
 
 import { Heart, MessageCircle, Bookmark, Send, BadgeCheck } from "lucide-react";
 import Image from "next/image";
-import { useState, useRef, TouchEvent } from "react";
+import { useState, useRef, TouchEvent, useEffect } from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import LucasProfile from "@/assets/lucas-perfil.png";
 import RezendeProfile from "@/assets/rezende-profile.png";
@@ -17,25 +17,34 @@ export default function InstagramCarouselComponent() {
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+  const [dragOffset, setDragOffset] = useState(0);
 
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-  const handleTouchStart = (e: TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setIsDragging(true);
+    setDragStart(e.touches[0].clientX);
   };
 
-  const handleTouchMove = (e: TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isDragging) return;
+    const currentPosition = e.touches[0].clientX;
+    const diff = dragStart - currentPosition;
+    setDragOffset(diff);
   };
 
   const handleTouchEnd = () => {
-    if (touchStartX.current - touchEndX.current > 75) {
-      nextSlide();
+    setIsDragging(false);
+    if (Math.abs(dragOffset) > 50) {
+      if (dragOffset > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
     }
-    if (touchEndX.current - touchStartX.current > 75) {
-      prevSlide();
-    }
+    setDragOffset(0);
   };
 
   const nextSlide = () => {
@@ -48,6 +57,18 @@ export default function InstagramCarouselComponent() {
     );
   };
 
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (carousel) {
+      carousel.style.transition = isDragging
+        ? "none"
+        : "transform 0.3s ease-out";
+      carousel.style.transform = `translateX(${
+        -currentSlide * 100 + (dragOffset / carousel.clientWidth) * 100
+      }%)`;
+    }
+  }, [currentSlide, isDragging, dragOffset]);
+
   return (
     <div className="max-w-md mx-auto bg-black text-white border-b border-zinc-800 pb-4">
       <div className="flex items-center p-4">
@@ -58,18 +79,26 @@ export default function InstagramCarouselComponent() {
         <BadgeCheck className="fill-[#009CEF] text-black ml-1 mt-1" size={15} />
       </div>
 
-      <div
-        className="relative aspect-[4/5] bg-zinc-800"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        <Image
-          src={carouselImages[currentSlide]}
-          alt={`Post image ${currentSlide + 1}`}
-          fill
-          className="object-cover"
-        />
+      <div className="relative overflow-hidden">
+        <div
+          ref={carouselRef}
+          className="flex"
+          style={{ width: `${carouselImages.length * 100}%` }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {carouselImages.map((image, index) => (
+            <div key={index} className="relative aspect-[4/5] w-full">
+              <Image
+                src={image}
+                alt={`Post image ${index + 1}`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="flex justify-center gap-1.5 pt-3">
