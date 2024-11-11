@@ -1,17 +1,9 @@
 "use client";
 
-import {
-  Heart,
-  MessageCircle,
-  Bookmark,
-  Send,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
-import Image, { StaticImageData } from "next/image";
+import { Heart, MessageCircle, Bookmark, Send, BadgeCheck } from "lucide-react";
+import Image from "next/image";
 import { useState, useRef, TouchEvent } from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import Profile from "@/assets/header.png";
 import LucasProfile from "@/assets/lucas-perfil.png";
 import RezendeProfile from "@/assets/rezende-profile.png";
 import NotePerfil from "@/assets/note-perfil.png";
@@ -57,14 +49,13 @@ export default function InstagramCarouselComponent() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-black text-white border-t border-b border-zinc-800 pb-4">
+    <div className="max-w-md mx-auto bg-black text-white border-b border-zinc-800 pb-4">
       <div className="flex items-center p-4">
-        <Avatar className="h-8 w-8">
+        <Avatar className="h-6 w-6 border border-zinc-600">
           <AvatarImage src={PHProfile.src} alt="Profile picture" />
-          <AvatarFallback>OO</AvatarFallback>
         </Avatar>
-        <span className="ml-3 font-semibold">oordonhas</span>
-        <span className="ml-2 text-zinc-400">• Seguindo</span>
+        <span className="ml-2 font-semibold text-sm">oordonhas</span>
+        <BadgeCheck className="fill-[#009CEF] text-black ml-1 mt-1" size={15} />
       </div>
 
       <div
@@ -79,33 +70,18 @@ export default function InstagramCarouselComponent() {
           fill
           className="object-cover"
         />
-        {carouselImages.length > 1 && (
-          <>
-            <button
-              className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 rounded-full p-1"
-              onClick={prevSlide}
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 rounded-full p-1"
-              onClick={nextSlide}
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </>
-        )}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1">
-          {carouselImages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-1.5 h-1.5 rounded-full ${
-                index === currentSlide ? "bg-white" : "bg-zinc-500/50"
-              }`}
-            />
-          ))}
-        </div>
+      </div>
+
+      <div className="flex justify-center gap-1.5 pt-3">
+        {carouselImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-2 h-2 rounded-full ${
+              index === currentSlide ? "bg-blue-600 w-2" : "bg-zinc-500"
+            }`}
+          />
+        ))}
       </div>
 
       <div className="p-4">
@@ -113,19 +89,22 @@ export default function InstagramCarouselComponent() {
           <div className="flex gap-4">
             <button
               onClick={() => setIsLiked(!isLiked)}
-              className="hover:text-zinc-300 transition-colors"
+              className="hover:text-zinc-300 transition-colors flex flex-row gap-1.5 items-center"
             >
               <Heart
                 className={`w-6 h-6 ${
                   !isLiked ? "fill-red-500 stroke-red-500" : ""
                 }`}
               />
+              <span className="font-semibold text-sm">12,6 mil</span>
             </button>
-            <button className="hover:text-zinc-300 transition-colors">
+            <button className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1">
               <MessageCircle className="w-6 h-6" />
+              <span className="font-semibold text-sm">128</span>
             </button>
-            <button className="hover:text-zinc-300 transition-colors">
+            <button className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1">
               <Send className="w-6 h-6" />
+              <span className="font-semibold text-sm">695</span>
             </button>
           </div>
           <button
@@ -152,7 +131,7 @@ export default function InstagramCarouselComponent() {
           </div>
           <span className="text-sm">
             Curtido por <span className="font-semibold">lucasmendes</span> e{" "}
-            <span className="font-semibold">outras 123.671 pessoas</span>
+            <span className="font-semibold">outras pessoas</span>
           </span>
         </div>
         <div className="text-xs text-zinc-400 mt-1 font-light">
