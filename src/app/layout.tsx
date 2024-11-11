@@ -174,7 +174,6 @@ const poppins = localFont({
 
 export const metadata: Metadata = {
   title: "PH (@oordonhas)",
-  description: "Aumente sua organização e produtividade.",
 };
 
 export default function RootLayout({
