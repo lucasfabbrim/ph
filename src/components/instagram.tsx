@@ -80,7 +80,10 @@ export default function InstagramCarouselComponent() {
           }}
         >
           {carouselImages.map((image, index) => (
-            <div key={index} className="flex-shrink-0 w-full h-full relative">
+            <div
+              key={index}
+              className="flex-shrink-0 w-full h-full relative bg-black"
+            >
               <Image
                 src={image}
                 alt={`Post image ${index + 1}`}
