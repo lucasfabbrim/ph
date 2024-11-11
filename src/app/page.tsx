@@ -143,20 +143,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 mr-3">
-                  <button
-                    onClick={() =>
-                      handleCopy(
-                        "https://www.gsuplementos.com.br/creatina-100g-creapure-growth-supplements-p985927",
-                      )
-                    }
-                  >
-                    <Copiando className="w-5 h-5" />
-                  </button>
-                  <Link href="#">
-                    <ShoppingCart className="w-6 h-6 text-white fill-white" />
-                  </Link>
-                </div>
+                <span className="mr-2 text-sm text-zinc-400">Em breve...</span>
               </div>
             </Card>
           </div>
