@@ -140,13 +140,6 @@ export default function InstagramCarouselComponent() {
             Off season... Continue!
           </span>
         </span>
-        <span className="mt-3 text-xs font-semibold text-blue-400 flex items-center gap-1">
-          @growthsupplements
-          <span className="text-xs font-normal text-white">| code: PH</span>
-        </span>
-        <div className="text-xs text-zinc-400 mt-3 font-normal">
-          28 de janeiro
-        </div>
       </div>
     </div>
   );
