@@ -28,11 +28,15 @@ export default function InstagramCarouselComponent() {
   const touchEndX = useRef(0);
   const touchEndY = useRef(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>();
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
     setIsSwiping(true);
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
   }, []);
 
   const handleTouchMove = useCallback(
@@ -43,16 +47,16 @@ export default function InstagramCarouselComponent() {
       const diffX = touchStartX.current - touchEndX.current;
       const diffY = Math.abs(touchStartY.current - touchEndY.current);
 
-      // Verifica se o movimento é mais horizontal do que vertical
       if (Math.abs(diffX) > diffY) {
-        e.preventDefault(); // Previne o scroll vertical
+        e.preventDefault();
+        const newOffset = diffX;
         if (
-          (currentSlide === 0 && diffX < 0) ||
-          (currentSlide === carouselImages.length - 1 && diffX > 0)
+          (currentSlide === 0 && newOffset < 0) ||
+          (currentSlide === carouselImages.length - 1 && newOffset > 0)
         ) {
-          setSwipeOffset(diffX / 4); // Resistência no início e fim do carrossel
+          setSwipeOffset(newOffset / 3);
         } else {
-          setSwipeOffset(diffX);
+          setSwipeOffset(newOffset);
         }
       }
     },
@@ -70,7 +74,25 @@ export default function InstagramCarouselComponent() {
         setCurrentSlide(currentSlide - 1);
       }
     }
-    setSwipeOffset(0);
+
+    const startTime = performance.now();
+    const startOffset = swipeOffset;
+    const duration = 300;
+
+    const animate = (time: number) => {
+      const elapsed = time - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      const newOffset = startOffset * (1 - easeProgress);
+
+      setSwipeOffset(newOffset);
+
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
   }, [currentSlide]);
 
   useEffect(() => {
