@@ -119,7 +119,7 @@ export default function Home() {
           </div>
 
           {/* Excellence Card */}
-          <div className="space-y-3 border-b border-b-zinc-900 pb-12 mx-6 pt-6 border-t border-t-zinc-900">
+          <div className="space-y-3 border-b border-b-zinc-900 pb-12 mx-8 pt-6 border-t border-t-zinc-900">
             <h1 className="items-center text-center text-xl pb-3 font-semibold pt-4 ">
               Organização
             </h1>
@@ -155,7 +155,7 @@ export default function Home() {
           </div>
 
           {/* Outros Produtos */}
-          <div className="space-y-5 mx-6 pb-10 border-b border-b-zinc-900 pt-4">
+          <div className="space-y-5 mx-8 pb-10 border-b border-b-zinc-900 pt-4">
             <h1 className="items-center text-center text-xl pb-2 font-semibold">
               Suplementação
             </h1>
@@ -230,12 +230,12 @@ export default function Home() {
           </div>
 
           {/* Instagram Carousel */}
-          <div className="mx-6 ">
+          <div className="mx-8 ">
             <InstagramCarouselComponent />
           </div>
 
           {/* Mensagem de rodapé */}
-          <div className="mx-6 justify-center flex flex-col pb-3 pt-1 items-center text-center">
+          <div className="mx-8 justify-center flex flex-col pb-3 pt-1 items-center text-center">
             <a
               href="https://api.whatsapp.com/send?phone=5519993356780&text=Ol%C3%A1,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."
               className="text-xs text-zinc-500 pt-1"
