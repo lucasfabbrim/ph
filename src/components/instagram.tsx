@@ -11,9 +11,8 @@ import PHProfile from "@/assets/perfil-instagram.png";
 import Photo from "@/assets/card-1.jpeg";
 import Photo2 from "@/assets/card-2.jpeg";
 import Photo3 from "@/assets/card-3.png";
-import Photo4 from "@/assets/card-4.png";
 
-const carouselImages = [Photo, Photo2, Photo3, Photo4];
+const carouselImages = [Photo, Photo2, Photo3];
 
 export default function InstagramCarouselComponent() {
   const [isLiked, setIsLiked] = useState(false);
@@ -70,7 +69,7 @@ export default function InstagramCarouselComponent() {
       </div>
 
       <div
-        className="relative aspect-[3/5] bg-transparent overflow-hidden"
+        className="relative aspect-[3/5.5] bg-transparent overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -86,11 +85,10 @@ export default function InstagramCarouselComponent() {
               <Image
                 src={image}
                 alt={`Post image ${index + 1}`}
-                width={500}
+                width={900}
                 height={625}
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-black/60 to-transparent" />
             </div>
           ))}
         </div>
