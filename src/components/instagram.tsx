@@ -102,7 +102,7 @@ export default function InstagramCarouselComponent() {
 
       <div
         ref={carouselRef}
-        className="relative aspect-[3/5] bg-transparent overflow-hidden touch-none"
+        className="relative aspect-[3/5.5] bg-transparent overflow-hidden touch-none"
       >
         <div
           className="flex transition-transform duration-300 ease-out"
@@ -121,6 +121,7 @@ export default function InstagramCarouselComponent() {
                 height={625}
                 className="object-cover w-full h-full"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
             </div>
           ))}
         </div>
