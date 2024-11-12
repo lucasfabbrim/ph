@@ -45,9 +45,12 @@ export default function InstagramCarouselComponent() {
       touchEndX.current = e.touches[0].clientX;
       touchEndY.current = e.touches[0].clientY;
       const diffX = touchStartX.current - touchEndX.current;
-      const diffY = Math.abs(touchStartY.current - touchEndY.current);
+      const diffY = touchStartY.current - touchEndY.current;
+      const absDiffX = Math.abs(diffX);
+      const absDiffY = Math.abs(diffY);
 
-      if (Math.abs(diffX) > diffY) {
+      if (absDiffX > absDiffY && absDiffX > 5) {
+        // Movimento horizontal - prevenir scroll e atualizar swipeOffset
         e.preventDefault();
         const newOffset = diffX;
         if (
@@ -59,6 +62,8 @@ export default function InstagramCarouselComponent() {
           setSwipeOffset(newOffset);
         }
       }
+      // Se o movimento for mais vertical, não fazemos nada,
+      // permitindo o comportamento padrão de scroll
     },
     [currentSlide, isSwiping],
   );
@@ -102,7 +107,7 @@ export default function InstagramCarouselComponent() {
         passive: false,
       });
       carousel.addEventListener("touchmove", handleTouchMove as any, {
-        passive: false,
+        passive: true, // Alterado para true
       });
       carousel.addEventListener("touchend", handleTouchEnd as any);
 
@@ -126,7 +131,7 @@ export default function InstagramCarouselComponent() {
 
       <div
         ref={carouselRef}
-        className="relative aspect-[3/4] bg-transparent overflow-hidden touch-none"
+        className="relative aspect-[3/4] bg-transparent overflow-hidden"
       >
         <div
           className="flex transition-transform duration-300 ease-out"
