@@ -50,29 +50,27 @@ export default function Home() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    // Definindo isClient para true após a montagem do componente
     setIsClient(true);
   }, []);
 
-  const handleCopy = (link: string) => {
-    navigator.clipboard
-      .writeText(link)
-      .then(() => {
-        toast({
-          className: "bg-zinc-900 rounded-[10px] text-white border-none ",
-          title: "Perfeito! Link copiado.",
-          description: "Agora você pode colar o link onde desejar.",
-          duration: 1000,
+  const handleCopy = (link) => {
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(link)
+        .then(() => {
+          toast({
+            className: "bg-zinc-900 rounded-[10px] text-white border-none",
+            title: "Perfeito! Link copiado.",
+            description: "Agora você pode colar o link onde desejar.",
+            duration: 1000,
+          });
+        })
+        .catch((err) => {
+          console.error("Erro ao copiar o link:", err);
         });
-      })
-      .catch((err) => {
-        console.error("Erro ao copiar o link:", err);
-      });
+    }
   };
-
-  if (!isClient) {
-    return null;
-  }
-
   return (
     <motion.div
       initial="initial"
