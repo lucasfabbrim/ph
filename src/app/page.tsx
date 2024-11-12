@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import {
   Crown,
@@ -13,39 +13,23 @@ import {
   ChevronDown,
   InstagramIcon,
   Phone,
-  Heart,
-  MessageCircle,
-  Bookmark,
-  Send,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { useToast } from "@/hooks/use-toast";
-
-// Import your assets
 import Profile from "@/assets/header.png";
 import Whey from "@/assets/whey.png";
 import Creatina from "@/assets/creatina.png";
 import Arginina from "@/assets/arginine.png";
 import Glutamina from "@/assets/glutanima.png";
 import BCAA from "@/assets/bcaa.png";
+import InstagramCarouselComponent from "@/components/instagram";
+import { useToast } from "@/hooks/use-toast";
 import YoutubeIcon from "@/assets/icons/youtube.svg";
 import TikTokIcon from "@/assets/icons/titkok.svg";
 import SpotifyIcon from "@/assets/icons/spotify.svg";
 import Copiando from "@/assets/icons/copiando.svg";
 import Cupom from "@/assets/icons/cupom.svg";
 import NotePerfil from "@/assets/note-perfil.png";
-import LucasProfile from "@/assets/lucas-perfil.png";
-import RezendeProfile from "@/assets/rezende-profile.png";
-import PHProfile from "@/assets/perfil-instagram.png";
-import Photo from "@/assets/card-1.jpeg";
-import Photo2 from "@/assets/card-2.jpeg";
-import Photo3 from "@/assets/card-3.png";
-import Photo4 from "@/assets/card-4.png";
-import Photo5 from "@/assets/card-5.png";
-
-const carouselImages = [Photo5, Photo, Photo2, Photo3, Photo4];
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -61,132 +45,29 @@ const staggerChildren = {
   },
 };
 
-const FadeInWhenVisible = ({ children }: { children: React.ReactNode }) => {
-  const controls = useAnimation();
-  const ref = useRef(null);
-  const inView = useInView(ref);
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      transition={{ duration: 0.5 }}
-      variants={{
-        visible: { opacity: 1, y: 0 },
-        hidden: { opacity: 0, y: 20 },
-      }}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
 export default function Home() {
   const { toast } = useToast();
   const [isClient, setIsClient] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-  const [isSaved, setIsSaved] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isSwiping, setIsSwiping] = useState(false);
-  const [swipeOffset, setSwipeOffset] = useState(0);
-
-  const touchStartX = useRef(0);
-  const touchStartY = useRef(0);
-  const touchEndX = useRef(0);
-  const touchEndY = useRef(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  const handleCopy = useCallback(
-    (link: string) => {
-      navigator.clipboard
-        .writeText(link)
-        .then(() => {
-          toast({
-            className: "bg-zinc-900 rounded-[10px] text-white border-none ",
-            title: "Perfeito! Link copiado.",
-            description: "Agora você pode colar o link onde desejar.",
-            duration: 1000,
-          });
-        })
-        .catch((err) => {
-          console.error("Erro ao copiar o link:", err);
+  const handleCopy = (link: string) => {
+    navigator.clipboard
+      .writeText(link)
+      .then(() => {
+        toast({
+          className: "bg-zinc-900 rounded-[10px] text-white border-none ",
+          title: "Perfeito! Link copiado.",
+          description: "Agora você pode colar o link onde desejar.",
+          duration: 1000,
         });
-    },
-    [toast],
-  );
-
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-    setIsSwiping(true);
-  }, []);
-
-  const handleTouchMove = useCallback(
-    (e: React.TouchEvent) => {
-      if (!isSwiping) return;
-      touchEndX.current = e.touches[0].clientX;
-      touchEndY.current = e.touches[0].clientY;
-      const diffX = touchStartX.current - touchEndX.current;
-      const diffY = Math.abs(touchStartY.current - touchEndY.current);
-
-      if (Math.abs(diffX) > diffY) {
-        e.preventDefault();
-        if (
-          (currentSlide === 0 && diffX < 0) ||
-          (currentSlide === carouselImages.length - 1 && diffX > 0)
-        ) {
-          setSwipeOffset(diffX / 4);
-        } else {
-          setSwipeOffset(diffX);
-        }
-      }
-    },
-    [isSwiping, currentSlide],
-  );
-
-  const handleTouchEnd = useCallback(() => {
-    setIsSwiping(false);
-    const diff = touchStartX.current - touchEndX.current;
-
-    if (Math.abs(diff) > 50) {
-      if (diff > 0 && currentSlide < carouselImages.length - 1) {
-        setCurrentSlide(currentSlide + 1);
-      } else if (diff < 0 && currentSlide > 0) {
-        setCurrentSlide(currentSlide - 1);
-      }
-    }
-    setSwipeOffset(0);
-  }, [currentSlide]);
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (carousel) {
-      carousel.addEventListener("touchstart", handleTouchStart as any, {
-        passive: false,
+      })
+      .catch((err) => {
+        console.error("Erro ao copiar o link:", err);
       });
-      carousel.addEventListener("touchmove", handleTouchMove as any, {
-        passive: false,
-      });
-      carousel.addEventListener("touchend", handleTouchEnd as any);
-
-      return () => {
-        carousel.removeEventListener("touchstart", handleTouchStart as any);
-        carousel.removeEventListener("touchmove", handleTouchMove as any);
-        carousel.removeEventListener("touchend", handleTouchEnd as any);
-      };
-    }
-  }, [handleTouchStart, handleTouchMove, handleTouchEnd]);
+  };
 
   if (!isClient) {
     return null;
@@ -399,173 +280,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div variants={fadeInUp} className="mx-8 ">
-            <FadeInWhenVisible>
-              <div className="max-w-md mx-auto bg-black text-white border-b border-zinc-800 pb-4 -mt-5">
-                <FadeInWhenVisible>
-                  <div className="flex items-center p-4 border-zinc-600 border-b border-b-zinc-950">
-                    <Avatar className="h-6 w-6 border border-zinc-600">
-                      <AvatarImage src={PHProfile.src} alt="Profile picture" />
-                    </Avatar>
-                    <span className="ml-2 font-semibold text-sm">
-                      oordonhas
-                    </span>
-                    <BadgeCheck
-                      className="fill-[#009CEF] text-black ml-1"
-                      size={16}
-                    />
-                  </div>
-                </FadeInWhenVisible>
-
-                <FadeInWhenVisible>
-                  <div
-                    ref={carouselRef}
-                    className="relative aspect-[3/4] bg-transparent overflow-hidden touch-none"
-                  >
-                    <motion.div
-                      animate={{
-                        x: `calc(${-currentSlide * 100}% - ${swipeOffset}px)`,
-                      }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                      }}
-                      className="flex"
-                    >
-                      {carouselImages.map((image, index) => (
-                        <motion.div
-                          key={index}
-                          className="flex-shrink-0 w-full h-full relative"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.5 }}
-                        >
-                          <Image
-                            src={image}
-                            alt={`Post image ${index + 1}`}
-                            width={900}
-                            height={625}
-                            className="object-cover w-full h-full"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                  </div>
-                </FadeInWhenVisible>
-
-                <FadeInWhenVisible>
-                  <div className="flex justify-center gap-0.5 pt-4">
-                    {carouselImages.map((_, index) => (
-                      <motion.button
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        className={`w-1.5 h-1.5 rounded-full ${
-                          index === currentSlide
-                            ? "bg-[#009CEF]"
-                            : "bg-zinc-600"
-                        }`}
-                        whileHover={{ scale: 1.2 }}
-                        whileTap={{ scale: 0.9 }}
-                      />
-                    ))}
-                  </div>
-                </FadeInWhenVisible>
-
-                <FadeInWhenVisible>
-                  <div className="p-4">
-                    <div className="flex justify-between mb-4">
-                      <div className="flex gap-3">
-                        <motion.button
-                          onClick={() => setIsLiked(!isLiked)}
-                          className="hover:text-zinc-300 transition-colors flex flex-row gap-1.5 items-center"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                        >
-                          <motion.div
-                            animate={{ scale: isLiked ? [1, 1.2, 1] : 1 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            <Heart
-                              className={`w-5 h-5 ${
-                                isLiked ? "fill-red-600 stroke-red-600" : ""
-                              }`}
-                            />
-                          </motion.div>
-                          <span className="font-semibold text-sm">
-                            12,6 mil
-                          </span>
-                        </motion.button>
-                        <motion.button
-                          className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                        >
-                          <MessageCircle className="w-5 h-5" />
-                          <span className="font-semibold text-sm">237</span>
-                        </motion.button>
-                        <motion.button
-                          className="hover:text-zinc-300 transition-colors flex flex-row items-center gap-1"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                        >
-                          <Send className="w-5 h-5" />
-                          <span className="font-semibold text-sm">652</span>
-                        </motion.button>
-                      </div>
-                      <motion.button
-                        onClick={() => setIsSaved(!isSaved)}
-                        className="hover:text-zinc-300 transition-colors"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Bookmark
-                          className={`w-5 h-5 ${isSaved ? "fill-current" : ""}`}
-                        />
-                      </motion.button>
-                    </div>
-                    <FadeInWhenVisible>
-                      <div className="flex items-center gap-2 mt-2">
-                        <div className="flex -space-x-2">
-                          <Avatar className="w-6 h-6 border-2 border-black">
-                            <AvatarImage
-                              src={NotePerfil.src}
-                              alt="@noteplanning"
-                            />
-                          </Avatar>
-                          <Avatar className="w-6 h-6 border-2 border-black">
-                            <AvatarImage
-                              src={LucasProfile.src}
-                              alt="@lucasmendesss_10"
-                            />
-                          </Avatar>
-                          <Avatar className="w-6 h-6 border-2 border-black">
-                            <AvatarImage
-                              src={RezendeProfile.src}
-                              alt="@gz.rzd"
-                            />
-                          </Avatar>
-                        </div>
-                        <span className="text-sm">
-                          Curtido por <span className="font-semibold">PH</span>{" "}
-                          e{" "}
-                          <span className="font-semibold">outras pessoas</span>
-                        </span>
-                      </div>
-                    </FadeInWhenVisible>
-                    <FadeInWhenVisible>
-                      <span className="text-sm font-semibold text-white flex items-center gap-1">
-                        oordonhas
-                        <span className="text-sm font-normal text-white">
-                          Continue!
-                        </span>
-                      </span>
-                    </FadeInWhenVisible>
-                  </div>
-                </FadeInWhenVisible>
-              </div>
-            </FadeInWhenVisible>
+            <InstagramCarouselComponent />
           </motion.div>
 
           <motion.div
