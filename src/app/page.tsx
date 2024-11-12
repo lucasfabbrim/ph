@@ -50,11 +50,10 @@ export default function Home() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Definindo isClient para true após a montagem do componente
     setIsClient(true);
   }, []);
 
-  const handleCopy = (link) => {
+  const handleCopy = (link: string) => {
     if (navigator.clipboard) {
       navigator.clipboard
         .writeText(link)
