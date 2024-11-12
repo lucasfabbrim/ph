@@ -121,7 +121,6 @@ export default function InstagramCarouselComponent() {
                 height={625}
                 className="object-cover w-full h-full"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
             </div>
           ))}
         </div>
