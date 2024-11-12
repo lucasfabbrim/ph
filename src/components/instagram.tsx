@@ -2,7 +2,7 @@
 
 import { Heart, MessageCircle, Bookmark, Send, BadgeCheck } from "lucide-react";
 import Image from "next/image";
-import { useState, useRef, TouchEvent } from "react";
+import { useState, useRef, TouchEvent, useCallback, useEffect } from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import LucasProfile from "@/assets/lucas-perfil.png";
 import RezendeProfile from "@/assets/rezende-profile.png";
@@ -22,29 +22,42 @@ export default function InstagramCarouselComponent() {
   const [swipeOffset, setSwipeOffset] = useState(0);
 
   const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
   const touchEndX = useRef(0);
+  const touchEndY = useRef(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-  const handleTouchStart = (e: TouchEvent) => {
+  const handleTouchStart = useCallback((e: TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
     setIsSwiping(true);
-  };
+  }, []);
 
-  const handleTouchMove = (e: TouchEvent) => {
-    if (!isSwiping) return;
-    touchEndX.current = e.touches[0].clientX;
-    const diff = touchStartX.current - touchEndX.current;
+  const handleTouchMove = useCallback(
+    (e: TouchEvent) => {
+      if (!isSwiping) return;
+      touchEndX.current = e.touches[0].clientX;
+      touchEndY.current = e.touches[0].clientY;
+      const diffX = touchStartX.current - touchEndX.current;
+      const diffY = Math.abs(touchStartY.current - touchEndY.current);
 
-    if (
-      (currentSlide === 0 && diff < 0) ||
-      (currentSlide === carouselImages.length - 1 && diff > 0)
-    ) {
-      setSwipeOffset(0);
-      return;
-    }
-    setSwipeOffset(diff);
-  };
+      // Verifica se o movimento é mais horizontal do que vertical
+      if (Math.abs(diffX) > diffY) {
+        e.preventDefault(); // Previne o scroll vertical
+        if (
+          (currentSlide === 0 && diffX < 0) ||
+          (currentSlide === carouselImages.length - 1 && diffX > 0)
+        ) {
+          setSwipeOffset(diffX / 4); // Resistência no início e fim do carrossel
+        } else {
+          setSwipeOffset(diffX);
+        }
+      }
+    },
+    [currentSlide, isSwiping],
+  );
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = useCallback(() => {
     setIsSwiping(false);
     const diff = touchStartX.current - touchEndX.current;
 
@@ -56,7 +69,26 @@ export default function InstagramCarouselComponent() {
       }
     }
     setSwipeOffset(0);
-  };
+  }, [currentSlide]);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (carousel) {
+      carousel.addEventListener("touchstart", handleTouchStart as any, {
+        passive: false,
+      });
+      carousel.addEventListener("touchmove", handleTouchMove as any, {
+        passive: false,
+      });
+      carousel.addEventListener("touchend", handleTouchEnd as any);
+
+      return () => {
+        carousel.removeEventListener("touchstart", handleTouchStart as any);
+        carousel.removeEventListener("touchmove", handleTouchMove as any);
+        carousel.removeEventListener("touchend", handleTouchEnd as any);
+      };
+    }
+  }, [handleTouchStart, handleTouchMove, handleTouchEnd]);
 
   return (
     <div className="max-w-md mx-auto bg-black text-white border-b border-zinc-800 pb-4 -mt-5">
@@ -69,25 +101,25 @@ export default function InstagramCarouselComponent() {
       </div>
 
       <div
-        className="relative aspect-[3/5.5] bg-transparent overflow-hidden"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
+        ref={carouselRef}
+        className="relative aspect-[3/5.5] bg-transparent overflow-hidden touch-none"
       >
         <div
           className="flex transition-transform duration-300 ease-out"
           style={{
-            transform: `translateX(${-currentSlide * 100 + swipeOffset / 4}%)`,
+            transform: `translateX(calc(${
+              -currentSlide * 100
+            }% - ${swipeOffset}px))`,
           }}
         >
           {carouselImages.map((image, index) => (
-            <div key={index} className="flex-shrink-0 w-full h-full relative ">
+            <div key={index} className="flex-shrink-0 w-full h-full relative">
               <Image
                 src={image}
                 alt={`Post image ${index + 1}`}
                 width={900}
                 height={625}
-                className="object-cover"
+                className="object-cover w-full h-full"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
             </div>
@@ -116,7 +148,7 @@ export default function InstagramCarouselComponent() {
             >
               <Heart
                 className={`w-5 h-5 ${
-                  !isLiked ? "fill-red-600 stroke-red-600" : ""
+                  isLiked ? "fill-red-600 stroke-red-600" : ""
                 }`}
               />
               <span className="font-semibold text-sm">12,6 mil</span>
@@ -134,7 +166,7 @@ export default function InstagramCarouselComponent() {
             onClick={() => setIsSaved(!isSaved)}
             className="hover:text-zinc-300 transition-colors"
           >
-            <Bookmark className={`w-5 h-5 ${!isSaved ? "fill-current" : ""}`} />
+            <Bookmark className={`w-5 h-5 ${isSaved ? "fill-current" : ""}`} />
           </button>
         </div>
         <div className="flex items-center gap-2 mt-2">
