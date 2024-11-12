@@ -2,8 +2,13 @@
 
 import { Heart, MessageCircle, Bookmark, Send, BadgeCheck } from "lucide-react";
 import Image from "next/image";
-import { useState, useRef, TouchEvent, useCallback, useEffect } from "react";
+import { useState } from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "./instagram-carousel.css";
 import LucasProfile from "@/assets/lucas-perfil.png";
 import RezendeProfile from "@/assets/rezende-profile.png";
 import NotePerfil from "@/assets/note-perfil.png";
@@ -19,105 +24,6 @@ const carouselImages = [Photo, Photo5, Photo2, Photo3, Photo4];
 export default function InstagramCarouselComponent() {
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isSwiping, setIsSwiping] = useState(false);
-  const [swipeOffset, setSwipeOffset] = useState(0);
-
-  const touchStartX = useRef(0);
-  const touchStartY = useRef(0);
-  const touchEndX = useRef(0);
-  const touchEndY = useRef(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number>();
-
-  const handleTouchStart = useCallback((e: TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-    setIsSwiping(true);
-    if (animationRef.current) {
-      cancelAnimationFrame(animationRef.current);
-    }
-  }, []);
-
-  const handleTouchMove = useCallback(
-    (e: TouchEvent) => {
-      if (!isSwiping) return;
-      touchEndX.current = e.touches[0].clientX;
-      touchEndY.current = e.touches[0].clientY;
-      const diffX = touchStartX.current - touchEndX.current;
-      const diffY = touchStartY.current - touchEndY.current;
-      const absDiffX = Math.abs(diffX);
-      const absDiffY = Math.abs(diffY);
-
-      if (absDiffX > absDiffY && absDiffX > 5) {
-        // Movimento horizontal - prevenir scroll e atualizar swipeOffset
-        e.preventDefault();
-        const newOffset = diffX;
-        if (
-          (currentSlide === 0 && newOffset < 0) ||
-          (currentSlide === carouselImages.length - 1 && newOffset > 0)
-        ) {
-          setSwipeOffset(newOffset / 3);
-        } else {
-          setSwipeOffset(newOffset);
-        }
-      }
-      // Se o movimento for mais vertical, não fazemos nada,
-      // permitindo o comportamento padrão de scroll
-    },
-    [currentSlide, isSwiping],
-  );
-
-  const handleTouchEnd = useCallback(() => {
-    setIsSwiping(false);
-    const diff = touchStartX.current - touchEndX.current;
-
-    if (Math.abs(diff) > 50) {
-      if (diff > 0 && currentSlide < carouselImages.length - 1) {
-        setCurrentSlide(currentSlide + 1);
-      } else if (diff < 0 && currentSlide > 0) {
-        setCurrentSlide(currentSlide - 1);
-      }
-    }
-
-    const startTime = performance.now();
-    const startOffset = swipeOffset;
-    const duration = 300;
-
-    const animate = (time: number) => {
-      const elapsed = time - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easeProgress = 1 - Math.pow(1 - progress, 3);
-      const newOffset = startOffset * (1 - easeProgress);
-
-      setSwipeOffset(newOffset);
-
-      if (progress < 1) {
-        animationRef.current = requestAnimationFrame(animate);
-      }
-    };
-
-    animationRef.current = requestAnimationFrame(animate);
-  }, [currentSlide]);
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (carousel) {
-      carousel.addEventListener("touchstart", handleTouchStart as any, {
-        passive: false,
-      });
-      carousel.addEventListener("touchmove", handleTouchMove as any, {
-        passive: true, // Alterado para true
-      });
-      carousel.addEventListener("touchend", handleTouchEnd as any);
-
-      return () => {
-        carousel.removeEventListener("touchstart", handleTouchStart as any);
-        carousel.removeEventListener("touchmove", handleTouchMove as any);
-        carousel.removeEventListener("touchend", handleTouchEnd as any);
-      };
-    }
-  }, [handleTouchStart, handleTouchMove, handleTouchEnd]);
 
   return (
     <div className="max-w-md mx-auto bg-black text-white border-b border-zinc-800 pb-4 -mt-5">
@@ -129,43 +35,29 @@ export default function InstagramCarouselComponent() {
         <BadgeCheck className="fill-[#009CEF] text-black ml-1" size={16} />
       </div>
 
-      <div
-        ref={carouselRef}
-        className="relative aspect-[3/4] bg-transparent overflow-hidden"
+      <Swiper
+        pagination={{
+          clickable: true,
+          renderBullet: function (index, className) {
+            return '<span class="' + className + ' bg-[#009CEF]"></span>';
+          },
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
       >
-        <div
-          className="flex transition-transform duration-300 ease-out"
-          style={{
-            transform: `translateX(calc(${
-              -currentSlide * 100
-            }% - ${swipeOffset}px))`,
-          }}
-        >
-          {carouselImages.map((image, index) => (
-            <div key={index} className="flex-shrink-0 w-full h-full relative">
+        {carouselImages.map((image, index) => (
+          <SwiperSlide key={index}>
+            <div className="aspect-[3/4] relative">
               <Image
                 src={image}
                 alt={`Post image ${index + 1}`}
-                width={900}
-                height={625}
-                className="object-cover w-full h-full"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex justify-center gap-0.5 pt-4">
-        {carouselImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-1.5 h-1.5 rounded-full ${
-              index === currentSlide ? "bg-[#009CEF]" : "bg-zinc-600"
-            }`}
-          />
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
 
       <div className="p-4">
         <div className="flex justify-between mb-4">
