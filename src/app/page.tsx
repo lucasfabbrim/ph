@@ -218,7 +218,7 @@ export default function Home() {
                 id: 4,
                 name: "Arginina",
                 src: Arginina,
-                link: "https://www.gsuplementos.com.br/arginina-powder-250gr-growth-supplements",
+                link: "https://www.gsuplementos.com.br/power-arginine-120caps-growth-supplements-p985923",
               },
               {
                 id: 5,
