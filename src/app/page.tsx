@@ -13,6 +13,7 @@ import {
   ChevronDown,
   InstagramIcon,
   Phone,
+  ExternalLink,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,6 +31,7 @@ import SpotifyIcon from "@/assets/icons/spotify.svg";
 import Copiando from "@/assets/icons/copiando.svg";
 import Cupom from "@/assets/icons/cupom.svg";
 import NotePerfil from "@/assets/note-perfil.png";
+import { Button } from "@/components/ui/button";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -280,25 +282,23 @@ export default function Home() {
             <InstagramCarouselComponent />
           </motion.div>
 
-          <motion.div
+          <motion.footer
             variants={fadeInUp}
-            className="mx-8 justify-center flex flex-col pb-3 pt-1 items-center text-center"
+            className="text-center text-gray-400 mt-8"
           >
-            <motion.a
-              href="https://api.whatsapp.com/send?phone=5519993356780&text=Ol%C3%A1,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."
-              className="text-xs text-zinc-500 pt-1"
-              whileHover={{ scale: 1.05 }}
+            <p className="text-xs">Desenvolvido por Lucas Mendes</p>
+            <Link
+              href="https://api.whatsapp.com/send?phone=5519993356780&text=Olá,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."
+              passHref
             >
-              Desenvolvido por Lucas Mendes.
-            </motion.a>
-            <motion.a
-              href="https://api.whatsapp.com/send?phone=5519993356780&text=Ol%C3%A1,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."
-              className="text-xs text-zinc-500 pt-1"
-              whileHover={{ scale: 1.05 }}
-            >
-              Clique para entrar em contato.
-            </motion.a>
-          </motion.div>
+              <Button
+                variant="link"
+                className="text-gray-400 hover:text-white text-xs -mt-10 font-normal"
+              >
+                Entre em contato
+              </Button>
+            </Link>
+          </motion.footer>
         </motion.section>
       </main>
     </motion.div>
