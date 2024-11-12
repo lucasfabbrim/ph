@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = localFont({
   src: [
@@ -186,6 +187,7 @@ export default function RootLayout({
       <body className={` ${inter.variable} font-inter antialiased bg-black`}>
         {children}
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
