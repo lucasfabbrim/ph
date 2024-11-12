@@ -102,7 +102,7 @@ export default function InstagramCarouselComponent() {
 
       <div
         ref={carouselRef}
-        className="relative aspect-[3/5.5] bg-transparent overflow-hidden touch-none"
+        className="relative aspect-[3/5] bg-transparent overflow-hidden touch-none"
       >
         <div
           className="flex transition-transform duration-300 ease-out"
