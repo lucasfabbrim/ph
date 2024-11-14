@@ -90,6 +90,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={` ${inter.variable} font-inter antialiased bg-black`}>
         {children}
+        <SpeedInsights />
         <Toaster />
         <Analytics />
       </body>
