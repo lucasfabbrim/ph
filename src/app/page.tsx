@@ -180,7 +180,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-4 mr-3">
                     <Link href="https://noteplanning.com">
-                      <ShoppingCart className="text-black fill-white" />
+                      <ShoppingCart className="w-6 h-6 text-white fill-white" />
                     </Link>
                   </div>
                 </div>
