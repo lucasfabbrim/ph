@@ -3,18 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import {
-  Crown,
-  BadgeCheck,
-  ShoppingCart,
-  Files,
-  Copy,
-  ChevronRight,
-  ChevronDown,
-  InstagramIcon,
-  Phone,
-  ExternalLink,
-} from "lucide-react";
+import { BadgeCheck, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Profile from "@/assets/header.png";
@@ -32,6 +21,7 @@ import Copiando from "@/assets/icons/copiando.svg";
 import Cupom from "@/assets/icons/cupom.svg";
 import NotePerfil from "@/assets/note-perfil.png";
 import { Button } from "@/components/ui/button";
+import { analytics } from "@/lib/analytics";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -55,11 +45,17 @@ export default function Home() {
     setIsClient(true);
   }, []);
 
-  const handleCopy = (link: string) => {
+  const handleCopy = (link: string, productName: string) => {
+    if (!isClient) return;
+
     if (navigator.clipboard) {
       navigator.clipboard
         .writeText(link)
         .then(() => {
+          const eventName = `Copiou Link - ${productName}`;
+          analytics.rastrearEventoAmplitude(eventName);
+          console.log("Link copiado:", productName);
+
           toast({
             className: "bg-zinc-900 rounded-[10px] text-white border-none",
             title: "Perfeito! Link copiado.",
@@ -72,6 +68,12 @@ export default function Home() {
         });
     }
   };
+
+  const handleLinkClick = (productName: string) => {
+    if (!isClient || !analytics) return;
+    analytics.rastrearEventoAmplitude(`Clicou - ${productName}`);
+  };
+
   return (
     <motion.div
       initial="initial"
@@ -121,21 +123,25 @@ export default function Home() {
                 src: TikTokIcon,
                 alt: "TikTok Icon",
                 href: "https://www.tiktok.com/@ph.ordonhas?_t=8rJWoCqgYum&_r=1",
+                name: "TikTok",
               },
               {
                 src: YoutubeIcon,
                 alt: "Instagram Icon",
                 href: "https://www.youtube.com/@phelipiordonhas",
+                name: "YouTube",
               },
               {
                 src: SpotifyIcon,
                 alt: "Spotify Icon",
                 href: "https://open.spotify.com/playlist/4dUc4S9Afj0odPGEBgg693?si=avgxReqnSyquckcD5XUkXw&pi=u-T97xyrc6TEy8&nd=1&dlsi=002771b6ab0a4c52",
+                name: "Spotify",
               },
             ].map((product, index) => (
               <motion.a
                 key={index}
                 href={product.href}
+                onClick={() => handleLinkClick(product.name)}
                 className="flex items-center justify-center rounded-xl text-white transition-colors"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -179,7 +185,10 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-center gap-4 mr-3">
-                    <Link href="https://noteplanning.com">
+                    <Link
+                      href="https://noteplanning.com"
+                      onClick={() => handleLinkClick("Note Planning")}
+                    >
                       <ShoppingCart className="w-6 h-6 text-white fill-white" />
                     </Link>
                   </div>
@@ -257,7 +266,7 @@ export default function Home() {
                     </div>
                     <div className="flex items-center gap-4 mr-3">
                       <motion.button
-                        onClick={() => handleCopy(product.link)}
+                        onClick={() => handleCopy(product.link, product.name)}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                       >
@@ -267,7 +276,10 @@ export default function Home() {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                       >
-                        <Link href={product.link}>
+                        <Link
+                          href={product.link}
+                          onClick={() => handleLinkClick(product.name)}
+                        >
                           <ShoppingCart className="w-6 h-6 text-white fill-white" />
                         </Link>
                       </motion.div>
@@ -290,6 +302,7 @@ export default function Home() {
             <Link
               href="https://api.whatsapp.com/send?phone=5519993356780&text=Olá,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."
               passHref
+              onClick={() => handleLinkClick("Contato WhatsApp")}
             >
               <Button
                 variant="link"
