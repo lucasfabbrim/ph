@@ -248,7 +248,7 @@ export default function Home() {
           >
             <p className="text-xs">Desenvolvido por Lucas Mendes</p>
             <Link
-              href="https://api.whatsapp.com/send?phone=5519993356780&text=Olá,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."
+              href="https://api.whatsapp.com/send?phone=5519998521915&text=Olá,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."
               passHref
               onClick={() => handleLinkClick("Contato WhatsApp")}
             >
