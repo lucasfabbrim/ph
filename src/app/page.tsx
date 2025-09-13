@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { BadgeCheck, ShoppingCart } from "lucide-react";
+import { BadgeCheck, CircleCheck, ClipboardCheck, ShoppingCart, SquareMousePointer } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Profile from "@/assets/header.png";
@@ -150,53 +150,6 @@ export default function Home() {
               </motion.a>
             ))}
           </motion.div>
-
-          <motion.div
-            variants={fadeInUp}
-            className="space-y-3 border-b border-b-zinc-900 pb-12 mx-8 pt-6 border-t border-t-zinc-900"
-          >
-            <h1 className="items-center text-center text-xl pb-3 font-semibold pt-4 ">
-              Organização
-            </h1>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <Card className="bg-neutral-900/60 border-none rounded-[25px]">
-                <div className="w-full justify-between p-4 h-auto flex items-center">
-                  <div className="flex items-center gap-4">
-                    <div className="relative w-12 h-12 rounded-md overflow-hidden">
-                      <Image
-                        src={NotePerfil}
-                        alt="Note Private"
-                        className="object-contain"
-                        fill
-                      />
-                    </div>
-                    <div className="text-left">
-                      <p className="font-medium text-base text-white">
-                        Note Planning
-                      </p>
-                      <div className="flex items-center gap-2">
-                        <p className="text-sm text-white font-normal flex items-center gap-1.5 ml-0.5 pt-.5">
-                          <Cupom className="w-4 h-4 " /> PH
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 mr-3">
-                    <Link
-                      href="https://noteplanning.com"
-                      onClick={() => handleLinkClick("Note Planning")}
-                    >
-                      <ShoppingCart className="w-6 h-6 text-white fill-white" />
-                    </Link>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          </motion.div>
-
           <motion.div
             variants={fadeInUp}
             className="space-y-5 mx-8 pb-10 border-b border-b-zinc-900 pt-4"
@@ -289,14 +242,9 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
-
-          <motion.div variants={fadeInUp} className="mx-8 ">
-            <InstagramCarouselComponent />
-          </motion.div>
-
           <motion.footer
             variants={fadeInUp}
-            className="text-center text-gray-400 mt-8"
+            className="text-center text-blue-100 mt-8"
           >
             <p className="text-xs">Desenvolvido por Lucas Mendes</p>
             <Link
@@ -306,9 +254,10 @@ export default function Home() {
             >
               <Button
                 variant="link"
-                className="text-gray-400 hover:text-white text-xs -mt-10 font-normal"
+                className="text-blue-600 hover:text-white text-xs -mt-10 font-normal"
               >
-                Entre em contato
+                Entre em contato 
+                <SquareMousePointer />
               </Button>
             </Link>
           </motion.footer>
