@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = localFont({
   src: [
@@ -90,7 +89,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={` ${inter.variable} font-inter antialiased bg-black`}>
         {children}
-        <SpeedInsights />
         <Toaster />
         <Analytics />
       </body>
