@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { Loader2, AlertCircle, CircleAlertIcon, Timer } from "lucide-react"
+import { Loader2, AlertCircle, CircleAlertIcon, Timer, QrCode, Clock, ShieldCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -118,8 +118,8 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
           transition={{ delay: 0.2 }}
           className="border-b border-gray-200 p-6"
         >
-          <div className="flex gap-4">
-            <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-md bg-[#ffd93d]">
+          <div className="flex gap-4 pt-5">
+            <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-[6px] bg-[#ffd93d]">
               <img
                 src={productId === 'np-001' ? '/note-private.png' : '/note-finances.png'}
                 alt={product.name}
@@ -132,7 +132,7 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
               </h1>
               <p className="mb-2 text-sm text-gray-600">{product.description}</p>
               <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-bold text-blue-600">{formatPrice(totalPrice)}</span>
+                <span className="text-xl font-bold text-blue-800">{formatPrice(totalPrice)}</span>
               </div>
             </div>
           </div>
@@ -201,7 +201,7 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>
-              <Label htmlFor="fullName" className="text-sm font-normal text-gray-700">
+              <Label htmlFor="fullName" className="text-xs font-normal text-gray-700">
                 Seu nome completo
               </Label>
               <div className="relative">
@@ -230,7 +230,7 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}>
-              <Label htmlFor="phone" className="text-sm font-normal text-gray-700">
+              <Label htmlFor="phone" className="text-xs font-normal text-gray-700">
                 Número de telefone
               </Label>
               <div className="mt-1.5 flex gap-2">
@@ -273,10 +273,9 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="border-t border-gray-200 pt-5"
             >
-              <div className="mb-4">
-                <div className="mt-2 flex flex-col items-center gap-3 rounded-[8px] border border-green-300 p-4 shadow-sm max-w-28 h-24">
+              <div className="mb-4 border-t border-gray-200">
+                <div className="bg-green-50 flex flex-col items-center gap-3 rounded-[8px] border border-green-300 p-4 shadow-sm max-w-28 h-24">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full ">
                     <svg className="h-5 w-5 text-green-600" viewBox="0 0 48 48" fill="currentColor">
                       <path fill="#4db6ac" d="M11.9,12h-0.68l8.04-8.04c2.62-2.61,6.86-2.61,9.48,0L36.78,12H36.1c-1.6,0-3.11,0.62-4.24,1.76	l-6.8,6.77c-0.59,0.59-1.53,0.59-2.12,0l-6.8-6.77C15.01,12.62,13.5,12,11.9,12z"/>
@@ -284,30 +283,26 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
                       <path fill="#4db6ac" d="M44.04,28.74L38.78,34H36.1c-1.07,0-2.07-0.42-2.83-1.17l-6.8-6.78c-1.36-1.36-3.58-1.36-4.94,0	l-6.8,6.78C13.97,33.58,12.97,34,11.9,34H9.22l-5.26-5.26c-2.61-2.62-2.61-6.86,0-9.48L9.22,14h2.68c1.07,0,2.07,0.42,2.83,1.17	l6.8,6.78c0.68,0.68,1.58,1.02,2.47,1.02s1.79-0.34,2.47-1.02l6.8-6.78C34.03,14.42,35.03,14,36.1,14h2.68l5.26,5.26	C46.65,21.88,46.65,26.12,44.04,28.74z"/>
                     </svg>
                   </div>
-                  <div>
-                    <span className="text-sm font-bold text-green-800 font-inter">Pix</span>
-                  </div>
+                  <span className="text-sm font-bold text-green-800 font-inter">Pix</span>
                 </div>
-                <div className="h-[1px] w-full bg-gray-200 mt-2" />
-                <Card className="shadow-none mt-2 p-5 rounded-[5px]">
-                  <div className="flex flex-col gap-4">
-                    <Card className="flex flex-col p-5 shadow-none gap-2">
-                      <Timer className="size-5 text-green-600" />
-                      <h1 className="text-base font-bold text-gray-900 font-inter">Aprovação Imediata</h1>
-                      <p className="text-sm text-gray-600 font-inter">Seu pagamento será aprovado instantaneamente.</p>
-                    </Card>
-                    <Card className="flex flex-col p-5 shadow-none gap-2">
-                      <Timer className="size-5 text-green-600" />
-                      <h1 className="text-base font-bold text-gray-900 font-inter">Segurança</h1>
-                      <p className="text-sm text-gray-600 font-inter">Seu pagamento será aprovado instantaneamente.</p>
-                    </Card>
-                    <Card className="flex flex-col p-5 shadow-none gap-2">
-                      <Timer className="size-5 text-green-600" />
-                      <h1 className="text-base font-bold text-gray-900 font-inter">Aprovação Imediata</h1>
-                      <p className="text-sm text-gray-600 font-inter">Seu pagamento será aprovado instantaneamente.</p>
-                    </Card>
-                  </div>
-                </Card>
+                <div className="h-[1px] w-full bg-gray-200" />
+                <div className="flex flex-col gap-4 pt-3">
+                  <Card className="flex flex-col p-5 shadow-none gap-2">
+                    <Clock className="size-4 text-green-600" />
+                    <h1 className="text-base font-bold text-gray-900 font-inter">Aprovação Imediata</h1>
+                    <p className="text-xs text-gray-600 font-inter">O pagamento com Pix leva pouco tempo para ser processado.</p>
+                  </Card>
+                  <Card className="flex flex-col p-5 shadow-none gap-2">
+                    <ShieldCheck className="size-4 text-green-600" />
+                    <h1 className="text-base font-bold text-gray-900 font-inter">Segurança</h1>
+                    <p className="text-xs text-gray-600 font-inter">O Pix foi desenvolvido pelo Banco Central para facilitar suas compras, garantindo a proteção dos seus dados.</p>
+                  </Card>
+                  <Card className="flex flex-col p-5 shadow-none gap-2">
+                    <QrCode className="size-4 text-green-600" />
+                    <h1 className="text-base font-bold text-gray-900 font-inter">FInalize sua compra com facilidade</h1>
+                    <p className="text-xs text-gray-600 font-inter">É só acessar a área Pix no aplicativo do seu banco e escanear o QR Code ou digitar o código.</p>
+                  </Card>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -372,7 +367,7 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
             transition={{ delay: 0.65 }}
             className="mt-8"
           >
-            <h2 className="mb-4 text-base font-semibold text-gray-900">Detalhes do pedido</h2>
+            <h2 className="mb-4 text-base font-medium text-gray-500">Detalhes da compra</h2>
             <Card className="p-4">
               <div className="space-y-3">
                 <div className="flex justify-between text-sm text-gray-900">
