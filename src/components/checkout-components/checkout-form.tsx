@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { Loader2, AlertCircle, CircleAlertIcon, Timer, QrCode, Clock, ShieldCheck } from "lucide-react"
+import { Loader2, CircleAlertIcon, QrCode, Clock, ShieldCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -21,7 +21,6 @@ interface CheckoutFormProps {
 }
 
 export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
-  const [showCoupon, setShowCoupon] = useState(false)
   const [additionalProducts, setAdditionalProducts] = useState<string[]>([])
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [orderBumpSelected, setOrderBumpSelected] = useState(false)
@@ -37,12 +36,12 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
   const totalPrice = orderBumpSelected ? PRODUCTS.note_complete_bundle.price : product.price
 
   const checkoutSchema = z.object({
-    email: z.string().email('E-mail inválido'),
-    confirmEmail: z.string().email('E-mail inválido'),
-    fullName: z.string().min(3, 'Nome deve ter pelo menos 3 caracteres'),
-    phone: z.string().min(10, 'Telefone deve ter pelo menos 10 dígitos'),
+    email: z.string().email('O e-mail informado é inválido.'),
+    confirmEmail: z.string().email('O e-mail informado é inválido.'),
+    fullName: z.string().min(3, 'O nome deve ter pelo menos 3 caracteres.'),
+    phone: z.string().min(10, 'O número de celular deve ter pelo menos 10 dígitos.'),
   }).refine((data) => data.email === data.confirmEmail, {
-    message: "Os e-mails não coincidem",
+    message: "Os e-mails informados não coincidem.",
     path: ["confirmEmail"],
   })
 
@@ -138,11 +137,11 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
           </div>
         </motion.div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="p-6">
-          <div className="space-y-5">
+        <form onSubmit={handleSubmit(onSubmit)} className="p-4">
+          <div className="space-y-3">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
               <Label htmlFor="email" className="text-xs font-normal text-gray-700">
-                Seu endereço de email
+                Seu email
               </Label>
               <div className="relative">
                 <Input
@@ -172,7 +171,7 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
 
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.35 }}>
               <Label htmlFor="confirmEmail" className="text-xs font-normal text-gray-700">
-                Confirme seu endereço de email
+                Confirme seu email
               </Label>
               <div className="relative">
                 <Input
@@ -202,7 +201,7 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
 
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>
               <Label htmlFor="fullName" className="text-xs font-normal text-gray-700">
-                Seu nome completo
+                Nome completo
               </Label>
               <div className="relative">
                 <Input
@@ -231,10 +230,10 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
 
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}>
               <Label htmlFor="phone" className="text-xs font-normal text-gray-700">
-                Número de telefone
+                Celular
               </Label>
               <div className="mt-1.5 flex gap-2">
-                <div className="flex h-9 w-20 items-center justify-start rounded-md border border-gray-300 bg-gray-50 px-3 text-sm">
+                <div className="flex h-9 w-20 items-center justify-start rounded-[8px] border border-gray-300 bg-gray-50 px-3 text-sm">
                   🇧🇷 +55
                 </div>
                 <div className="relative flex-1">
@@ -245,7 +244,7 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
                     {...register('phone', {
                       onChange: handlePhoneChange
                     })}
-                    className={`transition-all placeholder:text-gray-500 placeholder:text-xs ${
+                    className={`transition-all rounded-[8px] text-sm placeholder:text-gray-500 placeholder:text-xs ${
                       errors.phone
                         ? "border-red-500 pr-10 focus-visible:ring-red-500"
                         : "border-gray-300"
