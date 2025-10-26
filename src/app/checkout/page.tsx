@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import CheckoutForm from "@/components/checkout-components/checkout-form"
+import CheckoutForm from "@/components/checkout/checkout-form-clean"
 import { createPixPayment } from "@/lib/api"
 import { CheckoutFormData } from "@/types/checkout"
 

@@ -27,14 +27,23 @@ interface PixData {
   }
 }
 
-export default function InvoiceTestPage({ params }: { params: { id: string } }) {
+export default function InvoiceTestPage({ params }: { params: Promise<{ id: string }> }) {
   const [pixData, setPixData] = useState<PixData | null>(null)
   const [profile, setProfile] = useState<any>(null)
   const [showGuide, setShowGuide] = useState(false)
   const [copied, setCopied] = useState(false)
   const [isCopying, setIsCopying] = useState(false)
+  const [pixId, setPixId] = useState<string | null>(null)
   
   const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const resolveParams = async () => {
+      const resolvedParams = await params
+      setPixId(resolvedParams.id)
+    }
+    resolveParams()
+  }, [params])
 
   useEffect(() => {
     const storedPixData = localStorage.getItem('pix_data')

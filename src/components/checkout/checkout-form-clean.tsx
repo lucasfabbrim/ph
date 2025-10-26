@@ -30,7 +30,6 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
 
   const product = productId === 'np-001' ? PRODUCTS.note_private : PRODUCTS.note_finances
   const orderBumpProduct = productId === 'np-001' ? PRODUCTS.note_finances : PRODUCTS.note_private
-  const totalPrice = orderBumpSelected ? PRODUCTS.note_complete_bundle.price : product.price
 
   const {
     register,
@@ -46,6 +45,8 @@ export default function CheckoutForm({ onPixGenerated }: CheckoutFormProps) {
     isButtonDisabled,
     watchedValues
   } = useCheckoutForm()
+
+  const totalPrice = orderBumpSelected ? PRODUCTS.note_complete_bundle.price : product.price
 
   const { isChecking, isApproved } = usePaymentCheck({ paymentId })
 
