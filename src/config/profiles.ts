@@ -11,13 +11,6 @@ export const profiles: Record<string, Profile> = {
     sectionTitle: 'Templates',
     couponCode: 'PH',
     contactLink: 'https://api.whatsapp.com/send?phone=5519998521915&text=Olá,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site.',
-    theme: {
-      primaryColor: '#FF6B00',
-      secondaryColor: '#FF8C00',
-      backgroundColor: '#0A0A0A',
-      textColor: '#FFFFFF',
-      buttonStyle: 'rounded',
-    },
     socialLinks: [
       {
         name: 'Instagram',
@@ -75,13 +68,6 @@ export const profiles: Record<string, Profile> = {
     sectionTitle: 'Templates',
     couponCode: 'LUCAS',
     contactLink: 'https://api.whatsapp.com/send?phone=5519998521915&text=Olá,%20vim%20pelo%20Lucas%20e%20tenho%20interesse%20em%20criar%20um%20site.',
-    theme: {
-      primaryColor: '#3B82F6',
-      secondaryColor: '#60A5FA',
-      backgroundColor: '#000000',
-      textColor: '#F9FAFB',
-      buttonStyle: 'pill',
-    },
     socialLinks: [
       {
         name: 'Instagram',
@@ -127,13 +113,6 @@ export const profiles: Record<string, Profile> = {
     sectionTitle: 'Templates',
     couponCode: 'MARIA',
     contactLink: 'https://api.whatsapp.com/send?phone=5511999999999&text=Olá,%20vim%20pelo%20Maria%20e%20tenho%20interesse%20em%20uma%20consulta.',
-    theme: {
-      primaryColor: '#10B981',
-      secondaryColor: '#34D399',
-      backgroundColor: '#000000',
-      textColor: '#FFFFFF',
-      buttonStyle: 'rounded',
-    },
     socialLinks: [
       {
         name: 'Instagram',
@@ -173,13 +152,6 @@ export const profiles: Record<string, Profile> = {
     sectionTitle: 'Templates',
     couponCode: 'PEDRO',
     contactLink: 'https://api.whatsapp.com/send?phone=5511888888888&text=Olá,%20vim%20pelo%20Pedro%20e%20tenho%20interesse%20em%20mentoria.',
-    theme: {
-      primaryColor: '#8B5CF6',
-      secondaryColor: '#A78BFA',
-      backgroundColor: '#000000',
-      textColor: '#F5F3FF',
-      buttonStyle: 'square',
-    },
     socialLinks: [
       {
         name: 'Instagram',
@@ -219,13 +191,6 @@ export const profiles: Record<string, Profile> = {
     sectionTitle: 'Templates',
     couponCode: 'ANA',
     contactLink: 'https://api.whatsapp.com/send?phone=5511777777777&text=Olá,%20vim%20pelo%20Ana%20e%20tenho%20interesse%20em%20treino.',
-    theme: {
-      primaryColor: '#EC4899',
-      secondaryColor: '#F472B6',
-      backgroundColor: '#000000',
-      textColor: '#FAFAFA',
-      buttonStyle: 'pill',
-    },
     socialLinks: [
       {
         name: 'Instagram',

@@ -47,7 +47,6 @@ export function validateForm(values: Record<string, any>, schema: ValidationSche
   return errors
 }
 
-// Validações específicas
 export function validateEmail(email: string): string | undefined {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRegex.test(email)) {
@@ -70,7 +69,6 @@ export function validateCPF(cpf: string): string | undefined {
     return 'CPF deve ter 11 dígitos'
   }
   
-  // Validação básica de CPF
   if (/^(\d)\1{10}$/.test(cleaned)) {
     return 'CPF inválido'
   }
@@ -84,7 +82,6 @@ export function validateCNPJ(cnpj: string): string | undefined {
     return 'CNPJ deve ter 14 dígitos'
   }
   
-  // Validação básica de CNPJ
   if (/^(\d)\1{13}$/.test(cleaned)) {
     return 'CNPJ inválido'
   }
@@ -108,10 +105,8 @@ export function formatDocument(document: string): string {
   const cleaned = document.replace(/\D/g, '')
   
   if (cleaned.length <= 11) {
-    // CPF: 000.000.000-00
     return cleaned.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
   } else {
-    // CNPJ: 00.000.000/0000-00
     return cleaned.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5')
   }
 }
@@ -120,10 +115,8 @@ export function formatBrazilianPhone(phone: string): string {
   const cleaned = phone.replace(/\D/g, '')
   
   if (cleaned.length <= 10) {
-    // (XX) XXXX-XXXX
     return cleaned.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3')
   } else {
-    // (XX) XXXXX-XXXX
     return cleaned.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3')
   }
 }

@@ -15,9 +15,8 @@ import Cupom from "@/assets/icons/cupom.svg";
 import { Button } from "@/components/ui/button";
 import { getProfile } from "@/config/profiles";
 import { PRODUCTS } from "@/lib/products";
+import { ProfileHeader } from "@/components/profile/profile-header";
 
-// Imagens
-const Profile = "/header.png";
 const Whey = "/whey.png";
 
 const fadeInUp = {
@@ -66,7 +65,6 @@ function ProfileContent() {
       return;
     }
 
-    // Atualizar o título da página
     if (profile) {
       document.title = `${profile.name} (${profile.username})`;
     }
@@ -81,7 +79,6 @@ function ProfileContent() {
     const productId = urlParams.get('product');
     
     if (productId) {
-      // Mapear os IDs para as chaves dos produtos
       const productKeyMap: Record<string, string> = {
         'np-001': 'note_private',
         'nf-001': 'note_finances'
@@ -115,9 +112,9 @@ function ProfileContent() {
 
   if (!profile) {
     return (
-      <div className="bg-black min-h-screen flex items-center justify-center">
-        <div className="text-white text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white mx-auto"></div>
+      <div className="bg-zinc-100 min-h-screen flex items-center justify-center">
+        <div className="text-black text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-black mx-auto"></div>
           <p className="mt-4">Carregando perfil...</p>
         </div>
       </div>
@@ -128,41 +125,14 @@ function ProfileContent() {
     <motion.div
       initial="initial"
       animate="animate"
-      className="bg-black min-h-screen text-white"
+      className="bg-zinc-100 min-h-screen text-black"
     >
       <main className="container w-full mx-auto md:max-w-lg md:items-center">
         <motion.section
           variants={staggerChildren}
           className="space-y-6 pt-[0.5px] lg:pt-3"
         >
-          <motion.div variants={fadeInUp} className="relative overflow-hidden">
-            <Image
-              src={Profile}
-              alt={`${profile.name} profile`}
-              width={1200}
-              height={600}
-              className="w-full h-full lg:h-[550px] object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
-            <motion.div
-              variants={fadeInUp}
-              className="absolute bottom-6 flex justify-center items-center w-full text-center"
-            >
-              <div>
-                <h1 className="text-3xl font-bold justify-center">
-                  {profile.name}
-                </h1>
-                <p className="text-zinc-400 text-sm -mt-0.5 flex items-center justify-center">
-                  {profile.username}{" "}
-                  <BadgeCheck
-                    className="fill-[#009CEF] text-black ml-0.5 mt-0.5"
-                    size={15}
-                  />
-                </p>
-              </div>
-            </motion.div>
-          </motion.div>
+          <ProfileHeader profile={profile} />
 
           <motion.div
             variants={fadeInUp}
@@ -182,7 +152,7 @@ function ProfileContent() {
                   key={index}
                   href={social.url}
                   onClick={() => handleLinkClick(social.name)}
-                  className="flex items-center justify-center rounded-xl text-white transition-colors"
+                  className="flex items-center justify-center rounded-xl text-black transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -194,9 +164,9 @@ function ProfileContent() {
           
           <motion.div
             variants={fadeInUp}
-            className="space-y-5 mx-8 pb-10 border-b border-b-zinc-900"
+            className="space-y-5 mx-8 pb-10 border-b border-b-gray-300"
           >
-            <h1 className="items-center text-center text-xl pb-2 font-semibold">
+            <h1 className="items-center text-center text-xl pb-2 font-semibold text-black">
               {profile.sectionTitle || "Templates"}
             </h1>
             {profile.links.map((product, index) => (
@@ -206,7 +176,7 @@ function ProfileContent() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <Card className="bg-neutral-900/60 border-none rounded-[25px]">
+                <Card className="bg-gray-100 border border-zinc-200 rounded-[25px]">
                   <div className="w-full justify-between p-6 h-auto flex items-center">
                     <div className="flex items-center gap-4">
                       <div className="relative w-16 h-16 rounded-md overflow-hidden">
@@ -218,11 +188,11 @@ function ProfileContent() {
                         />
                       </div>
                       <div className="text-left">
-                        <p className="font-medium text-lg text-white flex items-center gap-2">
+                        <p className="font-medium text-lg text-black flex items-center gap-2">
                           {product.title}
                         </p>
                         <div className="flex items-center gap-2">
-                          <p className="text-lg text-white font-semibold flex items-center gap-1.5 ml-0.5 pt-.5">
+                          <p className="text-lg text-black font-semibold flex items-center gap-1.5 ml-0.5 pt-.5">
                             <Cupom className="w-5 h-5" /> {formatPrice(getProductPrice(product.url))}
                           </p>
                         </div>
@@ -237,7 +207,7 @@ function ProfileContent() {
                           href={product.url}
                           onClick={() => handleLinkClick(product.title)}
                         >
-                          <ShoppingCart className="w-7 h-7 text-white fill-white" />
+                          <ShoppingCart className="w-7 h-7 text-black fill-black" />
                         </Link>
                       </motion.div>
                     </div>

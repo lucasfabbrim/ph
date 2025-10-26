@@ -21,7 +21,6 @@ export function useForm<T extends Record<string, any>>({
 
   const setValue = useCallback((name: keyof T, value: any) => {
     setValues(prev => ({ ...prev, [name]: value }))
-    // Clear error when user starts typing
     if (errors[name as string]) {
       setErrors(prev => ({ ...prev, [name as string]: undefined }))
     }

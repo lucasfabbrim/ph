@@ -1,5 +1,4 @@
 export function validateCPF(cpf: string): boolean {
-  // Remove non-numeric characters
   cpf = cpf.replace(/[^\d]/g, "")
 
   if (cpf.length !== 11) return false
@@ -29,7 +28,6 @@ export function validateCPF(cpf: string): boolean {
 }
 
 export function validateCNPJ(cnpj: string): boolean {
-  // Remove non-numeric characters
   cnpj = cnpj.replace(/[^\d]/g, "")
 
   if (cnpj.length !== 14) return false
@@ -82,7 +80,6 @@ export function validateCPFOrCNPJ(document: string): boolean {
 }
 
 export function validatePhoneByCountry(phone: string, countryCode: string): boolean {
-  // Remove non-numeric characters
   const cleaned = phone.replace(/[^\d]/g, "")
 
   switch (countryCode) {
