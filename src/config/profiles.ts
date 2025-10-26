@@ -46,13 +46,13 @@ export const profiles: Record<string, Profile> = {
     links: [
       {
         id: '1',
-        title: 'Note Private',
+        title: 'Note Private - (50% OFF) Organize sua vida inteira em um só lugar.',
         url: '/checkout?profile=oordonhas&product=np-001',
         icon: '/assets/note-perfil.png',
       },
       {
         id: '2',
-        title: 'Note Finances',
+        title: 'Note Finances - (50% OFF) Organize sua vida financeira em um só lugar.',
         url: '/checkout?profile=oordonhas&product=nf-001',
         icon: '/assets/note-perfil.png',
       },
@@ -65,7 +65,7 @@ export const profiles: Record<string, Profile> = {
     bio: 'Desenvolvedor Full Stack | Tech Content Creator 🚀',
     avatar: '/assets/lucas-perfil.png',
     coverImage: '/assets/card-1.jpeg',
-    sectionTitle: 'Templates',
+    sectionTitle: 'Organize-se e aumente a sua produtividade.',
     couponCode: 'LUCAS',
     contactLink: 'https://api.whatsapp.com/send?phone=5519998521915&text=Olá,%20vim%20pelo%20Lucas%20e%20tenho%20interesse%20em%20criar%20um%20site.',
     socialLinks: [
@@ -91,14 +91,14 @@ export const profiles: Record<string, Profile> = {
     links: [
       {
         id: '1',
-        title: 'Note Private',
-        url: '/checkout?profile=lucasmendes&product=np-001',
+        title: 'Note Private - (50% OFF) Organize sua vida inteira em um só lugar.',
+        url: '/checkout?profile=oordonhas&product=np-001',
         icon: '/assets/note-perfil.png',
       },
       {
         id: '2',
-        title: 'Note Finances',
-        url: '/checkout?profile=lucasmendes&product=nf-001',
+        title: 'Note Finances - (50% OFF) Organize sua vida financeira em um só lugar.',
+        url: '/checkout?profile=oordonhas&product=nf-001',
         icon: '/assets/note-perfil.png',
       },
     ],
@@ -110,7 +110,7 @@ export const profiles: Record<string, Profile> = {
     bio: 'Nutricionista | Receitas Saudáveis | Vida Equilibrada 🥗',
     avatar: '/assets/note-perfil.png',
     coverImage: '/assets/card-2.jpeg',
-    sectionTitle: 'Templates',
+    sectionTitle: 'Organize-se e aumente a sua produtividade.',
     couponCode: 'MARIA',
     contactLink: 'https://api.whatsapp.com/send?phone=5511999999999&text=Olá,%20vim%20pelo%20Maria%20e%20tenho%20interesse%20em%20uma%20consulta.',
     socialLinks: [
@@ -130,14 +130,14 @@ export const profiles: Record<string, Profile> = {
     links: [
       {
         id: '1',
-        title: 'Note Private',
-        url: '/checkout?profile=mariasantos&product=np-001',
+        title: 'Note Private - (50% OFF) Organize sua vida inteira em um só lugar.',
+        url: '/checkout?profile=oordonhas&product=np-001',
         icon: '/assets/note-perfil.png',
       },
       {
         id: '2',
-        title: 'Note Finances',
-        url: '/checkout?profile=mariasantos&product=nf-001',
+        title: 'Note Finances - (50% OFF) Organize sua vida financeira em um só lugar.',
+        url: '/checkout?profile=oordonhas&product=nf-001',
         icon: '/assets/note-perfil.png',
       },
     ],
@@ -149,7 +149,7 @@ export const profiles: Record<string, Profile> = {
     bio: 'Coach de Negócios | Empreendedorismo Digital 💼',
     avatar: '/assets/perfil-instagram.png',
     coverImage: '/assets/card-3.png',
-    sectionTitle: 'Templates',
+    sectionTitle: 'Organize-se e aumente a sua produtividade.',
     couponCode: 'PEDRO',
     contactLink: 'https://api.whatsapp.com/send?phone=5511888888888&text=Olá,%20vim%20pelo%20Pedro%20e%20tenho%20interesse%20em%20mentoria.',
     socialLinks: [
@@ -169,14 +169,14 @@ export const profiles: Record<string, Profile> = {
     links: [
       {
         id: '1',
-        title: 'Note Private',
-        url: '/checkout?profile=pedrosilva&product=np-001',
+        title: 'Note Private - (50% OFF) Organize sua vida inteira em um só lugar.',
+        url: '/checkout?profile=oordonhas&product=np-001',
         icon: '/assets/note-perfil.png',
       },
       {
         id: '2',
-        title: 'Note Finances',
-        url: '/checkout?profile=pedrosilva&product=nf-001',
+        title: 'Note Finances - (50% OFF) Organize sua vida financeira em um só lugar.',
+        url: '/checkout?profile=oordonhas&product=nf-001',
         icon: '/assets/note-perfil.png',
       },
     ],
@@ -188,7 +188,7 @@ export const profiles: Record<string, Profile> = {
     bio: 'Personal Trainer | Transformação Corporal | Motivação 🏋️‍♀️',
     avatar: '/assets/lucas-perfil.png',
     coverImage: '/assets/card-4.png',
-    sectionTitle: 'Templates',
+    sectionTitle: 'Organize-se e aumente a sua produtividade.',
     couponCode: 'ANA',
     contactLink: 'https://api.whatsapp.com/send?phone=5511777777777&text=Olá,%20vim%20pelo%20Ana%20e%20tenho%20interesse%20em%20treino.',
     socialLinks: [
@@ -214,14 +214,14 @@ export const profiles: Record<string, Profile> = {
     links: [
       {
         id: '1',
-        title: 'Note Private',
-        url: '/checkout?profile=anacostafit&product=np-001',
+        title: 'Note Private - (50% OFF) Organize sua vida inteira em um só lugar.',
+        url: '/checkout?profile=oordonhas&product=np-001',
         icon: '/assets/note-perfil.png',
       },
       {
         id: '2',
-        title: 'Note Finances',
-        url: '/checkout?profile=anacostafit&product=nf-001',
+        title: 'Note Finances - (50% OFF) Organize sua vida financeira em um só lugar.',
+        url: '/checkout?profile=oordonhas&product=nf-001',
         icon: '/assets/note-perfil.png',
       },
     ],

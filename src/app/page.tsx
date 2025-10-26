@@ -71,12 +71,14 @@ function ProfileContent() {
   };
 
   const getProductImage = (productTitle: string, fallbackIcon?: string) => {
-    const imageMap: Record<string, string> = {
-      'Note Private': '/note-private.png',
-      'Note Finances': '/note-finances.png',
-    };
+    if (productTitle.includes('Note Private')) {
+      return '/note-private.png';
+    }
+    if (productTitle.includes('Note Finances')) {
+      return '/note-finances.png';
+    }
     
-    return imageMap[productTitle] || fallbackIcon || "";
+    return fallbackIcon || '/note-private.png';
   };
 
   if (!profile) {
@@ -119,20 +121,22 @@ function ProfileContent() {
       <div className="relative z-10 flex flex-col items-center px-4 py-8 max-w-2xl mx-auto">
         {/* Profile section */}
         <div className="flex flex-col items-center mb-8 text-center">
-          <div className="w-32 h-w-32 rounded-full overflow-hidden mb-4 border-4 border-white/20">
+          <div className="w-40 h-40 rounded-full overflow-hidden mb-4 border-4 border-white/20">
             <Image
               src="/lucas-perfil.png"
               alt={`${profile.name} profile`}
-              width={96}
-              height={96}
+              width={160}
+              height={160}
               className="w-full h-full object-cover"
               quality={100}
+              priority
+              unoptimized
             />
           </div>
           <h1 className="text-black text-2xl font-semibold mb-2">{profile.name}</h1>
           <p className="text-zinc-600 text-sm mb-4">{profile.bio}</p>
           
-          <div className="flex justify-center gap-3 mb-4">
+          <div className="flex justify-center gap-3">
             {profile.socialLinks.map((social, index) => {
               const socialIconMap: Record<string, any> = {
                 'TikTok': TikTokIcon,
@@ -159,7 +163,7 @@ function ProfileContent() {
         </div>
 
         <div className="w-full space-y-4 mb-8">
-          <h2 className="text-black text-xl font-semibold text-center mb-6">
+          <h2 className="text-black text-xl font-semibold text-center mb-6 font-inter">
             {profile.sectionTitle || "Templates"}
           </h2>
           {profile.links.map((product, index) => (
@@ -180,13 +184,14 @@ function ProfileContent() {
                     alt={product.title}
                     width={64}
                     height={64}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover rounded-[10px]"
+                    quality={100}
+                    unoptimized
                   />
                 </div>
                 <div className="flex-1 text-left">
                   <span className="text-black text-sm font-medium leading-tight block">{product.title}</span>
                   <div className="flex items-center gap-1 mt-1">
-                    <Cupom className="w-4 h-4 text-zinc-500" />
                     <span className="text-zinc-500 text-xs">{formatPrice(getProductPrice(product.url))}</span>
                   </div>
                 </div>
@@ -197,16 +202,8 @@ function ProfileContent() {
             </motion.div>
           ))}
         </div>
-
-        {/* Footer */}
-        <div className="flex items-center gap-4 text-zinc-500 text-sm">
-          <a href="#" className="hover:text-zinc-700 transition-colors">
-            Report
-          </a>
-          <span>•</span>
-          <a href="#" className="hover:text-zinc-700 transition-colors">
-            Privacy
-          </a>
+        <div className="mt-2 text-center text-zinc-500 text-sm">
+          <p>Desenvolvido por Lucas Mendes</p>
         </div>
       </div>
     </div>
