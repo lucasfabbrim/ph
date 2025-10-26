@@ -87,7 +87,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${inter.variable} font-inter antialiased bg-black`}>
+      <body className={` ${inter.variable} font-inter antialiased bg-white`}>
         {children}
         <Toaster />
         <Analytics />
