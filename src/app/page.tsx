@@ -4,25 +4,21 @@ import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { BadgeCheck, CircleCheck, ClipboardCheck, ShoppingCart, SquareMousePointer } from "lucide-react";
+import { BadgeCheck, ShoppingCart, SquareMousePointer } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Profile from "@/assets/header.png";
-import Whey from "@/assets/whey.png";
-import Creatina from "@/assets/creatina.png";
-import Arginina from "@/assets/arginine.png";
-import Glutamina from "@/assets/glutanima.png";
-import BCAA from "@/assets/bcaa.png";
-import InstagramCarouselComponent from "@/components/instagram";
 import { useToast } from "@/hooks/use-toast";
 import YoutubeIcon from "@/assets/icons/youtube.svg";
 import TikTokIcon from "@/assets/icons/titkok.svg";
 import SpotifyIcon from "@/assets/icons/spotify.svg";
-import Copiando from "@/assets/icons/copiando.svg";
 import Cupom from "@/assets/icons/cupom.svg";
-import NotePerfil from "@/assets/note-perfil.png";
 import { Button } from "@/components/ui/button";
 import { getProfile } from "@/config/profiles";
+import { PRODUCTS } from "@/lib/products";
+
+// Imagens
+const Profile = "/header.png";
+const Whey = "/whey.png";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -76,30 +72,45 @@ function ProfileContent() {
     }
   }, [profileId, profile, router, toast]);
 
-  const handleCopy = (link: string, productName: string) => {
-    if (!isClient) return;
-
-    if (navigator.clipboard) {
-      navigator.clipboard
-        .writeText(link)
-        .then(() => {
-          console.log("Link copiado:", productName);
-
-          toast({
-            className: "bg-zinc-900 rounded-[10px] text-white border-none",
-            title: "Perfeito! Link copiado.",
-            description: "Agora você pode colar o link onde desejar.",
-            duration: 1000,
-          });
-        })
-        .catch((err) => {
-          console.error("Erro ao copiar o link:", err);
-        });
-    }
-  };
 
   const handleLinkClick = (productName: string) => {
-    console.log('Link clicked:', productName);
+  };
+
+  const getProductPrice = (url: string) => {
+    const urlParams = new URLSearchParams(url.split('?')[1]);
+    const productId = urlParams.get('product');
+    
+    if (productId) {
+      // Mapear os IDs para as chaves dos produtos
+      const productKeyMap: Record<string, string> = {
+        'np-001': 'note_private',
+        'nf-001': 'note_finances'
+      };
+      
+      const productKey = productKeyMap[productId];
+      if (productKey && PRODUCTS[productKey]) {
+        return PRODUCTS[productKey].price;
+      }
+    }
+    
+    return 0;
+  };
+
+  const formatPrice = (price: number) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+    }).format(price);
+  };
+
+  const getProductImage = (productTitle: string, fallbackIcon?: string) => {
+    const imageMap: Record<string, string> = {
+      'Note Private': '/note-private.png',
+      'Note Finances': '/note-finances.png',
+    };
+    
+    return imageMap[productTitle] || fallbackIcon || Whey;
   };
 
   if (!profile) {
@@ -155,7 +166,7 @@ function ProfileContent() {
 
           <motion.div
             variants={fadeInUp}
-            className="flex justify-center gap-3 pb-10"
+            className="flex justify-center gap-3 pb-6"
           >
             {profile.socialLinks.map((social, index) => {
               const socialIconMap: Record<string, any> = {
@@ -183,10 +194,10 @@ function ProfileContent() {
           
           <motion.div
             variants={fadeInUp}
-            className="space-y-5 mx-8 pb-10 border-b border-b-zinc-900 pt-4"
+            className="space-y-5 mx-8 pb-10 border-b border-b-zinc-900"
           >
             <h1 className="items-center text-center text-xl pb-2 font-semibold">
-              {profile.sectionTitle || "Suplementação"}
+              {profile.sectionTitle || "Templates"}
             </h1>
             {profile.links.map((product, index) => (
               <motion.div
@@ -196,35 +207,28 @@ function ProfileContent() {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <Card className="bg-neutral-900/60 border-none rounded-[25px]">
-                  <div className="w-full justify-between p-4 h-auto flex items-center">
+                  <div className="w-full justify-between p-6 h-auto flex items-center">
                     <div className="flex items-center gap-4">
-                      <div className="relative w-12 h-12 rounded-md overflow-hidden">
+                      <div className="relative w-16 h-16 rounded-md overflow-hidden">
                         <Image
-                          src={product.icon || Whey}
+                          src={getProductImage(product.title, product.icon)}
                           alt={product.title}
                           className="object-contain"
                           fill
                         />
                       </div>
                       <div className="text-left">
-                        <p className="font-medium text-base text-white flex items-center gap-2">
+                        <p className="font-medium text-lg text-white flex items-center gap-2">
                           {product.title}
                         </p>
                         <div className="flex items-center gap-2">
-                          <p className="text-sm text-white font-normal flex items-center gap-1.5 ml-0.5 pt-.5">
-                            <Cupom className="w-4 h-4 " /> {profile.couponCode || "PH"}
+                          <p className="text-lg text-white font-semibold flex items-center gap-1.5 ml-0.5 pt-.5">
+                            <Cupom className="w-5 h-5" /> {formatPrice(getProductPrice(product.url))}
                           </p>
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-4 mr-3">
-                      <motion.button
-                        onClick={() => handleCopy(product.url, product.title)}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Copiando className="w-5 h-5" />
-                      </motion.button>
+                    <div className="flex items-center gap-5 mr-3">
                       <motion.div
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
@@ -233,7 +237,7 @@ function ProfileContent() {
                           href={product.url}
                           onClick={() => handleLinkClick(product.title)}
                         >
-                          <ShoppingCart className="w-6 h-6 text-white fill-white" />
+                          <ShoppingCart className="w-7 h-7 text-white fill-white" />
                         </Link>
                       </motion.div>
                     </div>

@@ -9,15 +9,15 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./instagram-carousel.css";
-import LucasProfile from "@/assets/lucas-perfil.png";
-import RezendeProfile from "@/assets/rezende-profile.png";
-import NotePerfil from "@/assets/note-perfil.png";
-import PHProfile from "@/assets/perfil-instagram.png";
-import Photo from "@/assets/card-1.jpeg";
-import Photo2 from "@/assets/card-2.jpeg";
-import Photo3 from "@/assets/card-3.png";
-import Photo4 from "@/assets/card-4.png";
-import Photo5 from "@/assets/card-5.png";
+const LucasProfile = "/lucas-perfil.png";
+const RezendeProfile = "/rezende-profile.png";
+const NotePerfil = "/note-perfil.png";
+const PHProfile = "/perfil-instagram.png";
+const Photo = "/card-1.jpeg";
+const Photo2 = "/card-2.jpeg";
+const Photo3 = "/card-3.png";
+const Photo4 = "/card-4.png";
+const Photo5 = "/card-5.png";
 
 const carouselImages = [Photo, Photo5, Photo2, Photo3, Photo4];
 
@@ -29,7 +29,7 @@ export default function InstagramCarouselComponent() {
     <div className="max-w-md mx-auto bg-black text-white border-b border-zinc-800 pb-4 -mt-5">
       <div className="flex items-center p-4 border-zinc-600 border-b border-b-zinc-950">
         <Avatar className="h-6 w-6 border border-zinc-600">
-          <AvatarImage src={PHProfile.src} alt="Profile picture" />
+          <AvatarImage src={PHProfile} alt="Profile picture" />
         </Avatar>
         <span className="ml-2 font-semibold text-sm">oordonhas</span>
         <BadgeCheck className="fill-[#009CEF] text-black ml-1" size={16} />
@@ -92,13 +92,13 @@ export default function InstagramCarouselComponent() {
         <div className="flex items-center gap-2 mt-2">
           <div className="flex -space-x-2">
             <Avatar className="w-6 h-6 border-2 border-black">
-              <AvatarImage src={NotePerfil.src} alt="@noteplanning" />
+              <AvatarImage src={NotePerfil} alt="@noteplanning" />
             </Avatar>
             <Avatar className="w-6 h-6 border-2 border-black">
-              <AvatarImage src={LucasProfile.src} alt="@lucasmendesss_10" />
+              <AvatarImage src={LucasProfile} alt="@lucasmendesss_10" />
             </Avatar>
             <Avatar className="w-6 h-6 border-2 border-black">
-              <AvatarImage src={RezendeProfile.src} alt="@gz.rzd" />
+              <AvatarImage src={RezendeProfile} alt="@gz.rzd" />
             </Avatar>
           </div>
           <span className="text-sm">
