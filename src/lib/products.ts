@@ -3,7 +3,7 @@ export interface Product {
   name: string
   description: string
   price: number
-  type: "TEMPLATE" | "CREDITS"
+  type: "TEMPLATE" | "CREDITS" | "BUNDLE"
   creditsAmount?: number
   createdAt: string
   updatedAt: string
@@ -25,6 +25,15 @@ export const PRODUCTS: Record<string, Product> = {
     description: "(50% OFF) Organize sua vida inteira em um só lugar",
     price: 24.99,
     type: "TEMPLATE",
+    createdAt: "2025-01-26T00:00:00.000Z",
+    updatedAt: "2025-01-26T00:00:00.000Z",
+  },
+  note_complete_bundle: {
+    id: "bundle-001",
+    name: "Note Complete Bundle",
+    description: "(Economia de R$ 7,00) Note Finances + Note Private - Organize sua vida completa",
+    price: 37.99,
+    type: "BUNDLE",
     createdAt: "2025-01-26T00:00:00.000Z",
     updatedAt: "2025-01-26T00:00:00.000Z",
   },
