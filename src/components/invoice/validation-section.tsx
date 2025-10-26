@@ -40,20 +40,7 @@ export function ValidationSection({
         <Button
           onClick={handleValidatePayment}
           disabled={validationCountdown > 0 || checking || paymentStatus !== "pending"}
-          className="w-full text-white h-14 text-lg font-semibold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-          style={{ 
-            backgroundColor: profile?.theme.primaryColor || "#3B82F6",
-          }}
-          onMouseEnter={(e) => {
-            if (!e.currentTarget.disabled) {
-              e.currentTarget.style.backgroundColor = profile?.theme.secondaryColor || "#2563EB"
-            }
-          }}
-          onMouseLeave={(e) => {
-            if (!e.currentTarget.disabled) {
-              e.currentTarget.style.backgroundColor = profile?.theme.primaryColor || "#3B82F6"
-            }
-          }}
+          className="w-full text-white h-14 text-lg font-semibold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed bg-blue-500 hover:bg-blue-600"
         >
           {checking ? (
             <>

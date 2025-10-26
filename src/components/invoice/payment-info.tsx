@@ -29,8 +29,7 @@ export function PaymentInfo({ pixData, timeLeft, profile }: PaymentInfoProps) {
     <>
       <motion.div className="text-center mb-8" variants={fadeInUp}>
         <div 
-          className="size-16 rounded-2xl flex items-center justify-center mx-auto mb-4 rotate-45"
-          style={{ backgroundColor: profile?.theme.primaryColor || "#00DC82" }}
+          className="size-16 rounded-2xl flex items-center justify-center mx-auto mb-4 rotate-45 bg-green-500"
         >
           <div className="-rotate-45 text-white text-2xl font-bold">PIX</div>
         </div>

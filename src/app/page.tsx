@@ -191,8 +191,8 @@ function ProfileContent() {
                 </div>
                 <div className="flex-1 text-left">
                   <span className="text-black text-sm font-medium leading-tight block">{product.title}</span>
-                  <div className="flex items-center gap-1 mt-1">
-                    <span className="text-zinc-500 text-xs">{formatPrice(getProductPrice(product.url))}</span>
+                  <div className="flex items-center gap-1 mt-2">
+                    <span className="text-zinc-500 text-xs"></span>
                   </div>
                 </div>
                 <div className="flex-shrink-0 text-zinc-400 group-hover:text-zinc-600 transition-colors">
@@ -201,9 +201,6 @@ function ProfileContent() {
               </Link>
             </motion.div>
           ))}
-        </div>
-        <div className="mt-2 text-center text-zinc-500 text-sm">
-          <p>Desenvolvido por Lucas Mendes</p>
         </div>
       </div>
     </div>

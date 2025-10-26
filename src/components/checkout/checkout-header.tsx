@@ -39,18 +39,6 @@ export function CheckoutHeader({ totalPrice, orderBumpSelected }: CheckoutHeader
       transition={{ duration: 0.6, delay: 0.2 }}
     >
       <div id="header" className="justify-center text-center items-center h-auto pt-4 flex flex-col gap-2">
-        <div id="header-noteplanning" className="flex space-x-2">
-          <Image
-            src="/noteplanning-app-icon-logo.jpg"
-            alt="icon-noteplanning"
-            width={24}
-            height={20}
-            quality={100}
-            className="rounded-[5px]"
-          />
-          <h4 className="tracking-tighter font-medium text-xl text-zinc-600">noteplanning</h4>
-        </div>
-        
         <div
           id="header-payment-security"
           className="p-2 px-20 bg-[#FFFFFF] rounded-[10px] mx-4 my-4 flex items-center justify-center gap-2"
