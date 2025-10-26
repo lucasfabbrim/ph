@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { getProfile } from "@/config/profiles";
 import { PRODUCTS } from "@/lib/products";
 import { ProfileHeader } from "@/components/profile/profile-header";
+import { useDynamicTitle } from "@/hooks/use-dynamic-title";
 
 const Whey = "/whey.png";
 
@@ -38,6 +39,8 @@ function ProfileContent() {
   const router = useRouter();
   const { toast } = useToast();
   const [isClient, setIsClient] = useState(false);
+  
+  useDynamicTitle();
   
   const profileId = searchParams.get("profile");
   const profile = profileId ? getProfile(profileId) : null;
@@ -245,9 +248,9 @@ function ProfileContent() {
 export default function Home() {
   return (
     <Suspense fallback={
-      <div className="bg-black min-h-screen flex items-center justify-center">
-        <div className="text-white text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white mx-auto"></div>
+      <div className="bg-zinc-100 min-h-screen flex items-center justify-center">
+        <div className="text-black text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-black mx-auto"></div>
           <p className="mt-4">Carregando...</p>
         </div>
       </div>

@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
-import { DynamicTitleProvider } from "@/components/dynamic-title-provider";
 
 const inter = localFont({
   src: [
@@ -89,9 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` ${inter.variable} font-inter antialiased bg-black`}>
-        <DynamicTitleProvider>
-          {children}
-        </DynamicTitleProvider>
+        {children}
         <Toaster />
         <Analytics />
       </body>

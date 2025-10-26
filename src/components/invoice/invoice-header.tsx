@@ -15,8 +15,7 @@ export function InvoiceHeader({ profile }: InvoiceHeaderProps) {
 
   return (
     <motion.div 
-      className="py-4 px-4 sticky top-0 z-10 shadow-sm"
-      style={{ backgroundColor: profile?.theme.primaryColor || "#FFD600" }}
+      className="py-4 px-4 sticky top-0 z-10 shadow-sm bg-yellow-400"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
