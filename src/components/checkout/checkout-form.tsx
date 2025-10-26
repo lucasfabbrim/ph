@@ -146,8 +146,7 @@ export function CheckoutForm({
         <div id="content-method-payment" className="flex flex-col pb-10 px-5 space-y-5">
           <h1 className="font-semibold text-zinc-800 items-center text-center">MÉTODO DE PAGAMENTO</h1>
           <div 
-            className="p-4 bg-green-500 text-white rounded-[7px] h-20 w-44 flex flex-col space-y-2 cursor-pointer hover:bg-green-600 transition-colors"
-            onClick={() => handlePaymentMethodSelect("pix")}
+            className="p-4 bg-green-500 text-white rounded-[7px] h-20 w-44 flex flex-col space-y-2"
           >
             <QrCode className="size-5" />
             <h2 className="text-sm font-medium">PIX</h2>
