@@ -3,42 +3,20 @@
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
-import { BadgeCheck, ShoppingCart, SquareMousePointer } from "lucide-react";
+import { ArrowRight, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useToast } from "@/hooks/use-toast";
 import YoutubeIcon from "@/assets/icons/youtube.svg";
 import TikTokIcon from "@/assets/icons/titkok.svg";
 import SpotifyIcon from "@/assets/icons/spotify.svg";
 import Cupom from "@/assets/icons/cupom.svg";
-import { Button } from "@/components/ui/button";
 import { getProfile } from "@/config/profiles";
 import { PRODUCTS } from "@/lib/products";
-import { ProfileHeader } from "@/components/profile/profile-header";
 import { useDynamicTitle } from "@/hooks/use-dynamic-title";
-
-const Whey = "/whey.png";
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 },
-};
-
-const staggerChildren = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
 
 function ProfileContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { toast } = useToast();
-  const [isClient, setIsClient] = useState(false);
   
   useDynamicTitle();
   
@@ -46,32 +24,20 @@ function ProfileContent() {
   const profile = profileId ? getProfile(profileId) : null;
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
     if (!profileId) {
-      router.push("/?profile=oordonhas");
+      router.push("/?profile=lucasmendes");
       return;
     }
 
     if (!profile) {
-      toast({
-        className: "bg-zinc-900 rounded-[10px] text-white border-none",
-        title: "Perfil não encontrado",
-        description: "Redirecionando para o perfil padrão...",
-        duration: 2000,
-      });
-      setTimeout(() => {
-        router.push("/?profile=oordonhas");
-      }, 2000);
+      router.push("/?profile=lucasmendes");
       return;
     }
 
     if (profile) {
       document.title = `${profile.name} (${profile.username})`;
     }
-  }, [profileId, profile, router, toast]);
+  }, [profileId, profile, router]);
 
 
   const handleLinkClick = (productName: string) => {
@@ -110,7 +76,7 @@ function ProfileContent() {
       'Note Finances': '/note-finances.png',
     };
     
-    return imageMap[productTitle] || fallbackIcon || Whey;
+    return imageMap[productTitle] || fallbackIcon || "";
   };
 
   if (!profile) {
@@ -125,22 +91,48 @@ function ProfileContent() {
   }
 
   return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      className="bg-zinc-100 min-h-screen text-black"
-    >
-      <main className="container w-full mx-auto md:max-w-lg md:items-center">
-        <motion.section
-          variants={staggerChildren}
-          className="space-y-6 pt-[0.5px] lg:pt-3"
-        >
-          <ProfileHeader profile={profile} />
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
+        <svg className="absolute top-0 left-0 w-full h-64" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path
+            fill="#f4f4f5"
+            fillOpacity="0.3"
+            d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,101.3C1248,85,1344,75,1392,69.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+          />
+        </svg>
+        <svg className="absolute top-0 left-0 w-full h-64" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path
+            fill="#e4e4e7"
+            fillOpacity="0.4"
+            d="M0,64L48,80C96,96,192,128,288,133.3C384,139,480,117,576,112C672,107,768,117,864,128C960,139,1056,149,1152,144C1248,139,1344,117,1392,106.7L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+          />
+        </svg>
+        <svg className="absolute top-0 left-0 w-full h-64" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path
+            fill="#d4d4d8"
+            fillOpacity="0.5"
+            d="M0,128L48,138.7C96,149,192,171,288,165.3C384,160,480,128,576,117.3C672,107,768,117,864,133.3C960,149,1056,171,1152,165.3C1248,160,1344,128,1392,112L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+          />
+        </svg>
+      </div>
 
-          <motion.div
-            variants={fadeInUp}
-            className="flex justify-center gap-3 pb-6"
-          >
+      <div className="relative z-10 flex flex-col items-center px-4 py-8 max-w-2xl mx-auto">
+        {/* Profile section */}
+        <div className="flex flex-col items-center mb-8 text-center">
+          <div className="w-32 h-w-32 rounded-full overflow-hidden mb-4 border-4 border-white/20">
+            <Image
+              src="/lucas-perfil.png"
+              alt={`${profile.name} profile`}
+              width={96}
+              height={96}
+              className="w-full h-full object-cover"
+              quality={100}
+            />
+          </div>
+          <h1 className="text-black text-2xl font-semibold mb-2">{profile.name}</h1>
+          <p className="text-zinc-600 text-sm mb-4">{profile.bio}</p>
+          
+          <div className="flex justify-center gap-3 mb-4">
             {profile.socialLinks.map((social, index) => {
               const socialIconMap: Record<string, any> = {
                 'TikTok': TikTokIcon,
@@ -155,7 +147,7 @@ function ProfileContent() {
                   key={index}
                   href={social.url}
                   onClick={() => handleLinkClick(social.name)}
-                  className="flex items-center justify-center rounded-xl text-black transition-colors"
+                  className="text-black hover:text-zinc-600 transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -163,85 +155,61 @@ function ProfileContent() {
                 </motion.a>
               );
             })}
-          </motion.div>
-          
-          <motion.div
-            variants={fadeInUp}
-            className="space-y-5 mx-8 pb-10 border-b border-b-gray-300"
-          >
-            <h1 className="items-center text-center text-xl pb-2 font-semibold text-black">
-              {profile.sectionTitle || "Templates"}
-            </h1>
-            {profile.links.map((product, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <Card className="bg-gray-100 border border-zinc-200 rounded-[25px]">
-                  <div className="w-full justify-between p-6 h-auto flex items-center">
-                    <div className="flex items-center gap-4">
-                      <div className="relative w-16 h-16 rounded-md overflow-hidden">
-                        <Image
-                          src={getProductImage(product.title, product.icon)}
-                          alt={product.title}
-                          className="object-contain"
-                          fill
-                        />
-                      </div>
-                      <div className="text-left">
-                        <p className="font-medium text-lg text-black flex items-center gap-2">
-                          {product.title}
-                        </p>
-                        <div className="flex items-center gap-2">
-                          <p className="text-lg text-black font-semibold flex items-center gap-1.5 ml-0.5 pt-.5">
-                            <Cupom className="w-5 h-5" /> {formatPrice(getProductPrice(product.url))}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-5 mr-3">
-                      <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <Link
-                          href={product.url}
-                          onClick={() => handleLinkClick(product.title)}
-                        >
-                          <ShoppingCart className="w-7 h-7 text-black fill-black" />
-                        </Link>
-                      </motion.div>
-                    </div>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-          
-          <motion.footer
-            variants={fadeInUp}
-            className="text-center text-blue-100 mt-8"
-          >
-            <p className="text-xs">Desenvolvido por Lucas Mendes</p>
-            <Link
-              href={profile.contactLink || "https://api.whatsapp.com/send?phone=5519998521915&text=Olá,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site."}
-              passHref
-              onClick={() => handleLinkClick("Contato WhatsApp")}
+          </div>
+        </div>
+
+        <div className="w-full space-y-4 mb-8">
+          <h2 className="text-black text-xl font-semibold text-center mb-6">
+            {profile.sectionTitle || "Templates"}
+          </h2>
+          {profile.links.map((product, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
             >
-              <Button
-                variant="link"
-                className="text-blue-600 hover:text-white text-xs -mt-10 font-normal"
+              <Link
+                href={product.url}
+                onClick={() => handleLinkClick(product.title)}
+                className="flex items-center gap-4 bg-zinc-100 hover:bg-zinc-200 transition-colors rounded-xl p-4 w-full group"
               >
-                Entre em contato 
-                <SquareMousePointer />
-              </Button>
-            </Link>
-          </motion.footer>
-        </motion.section>
-      </main>
-    </motion.div>
+                <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-white">
+                  <Image
+                    src={getProductImage(product.title, product.icon)}
+                    alt={product.title}
+                    width={64}
+                    height={64}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 text-left">
+                  <span className="text-black text-sm font-medium leading-tight block">{product.title}</span>
+                  <div className="flex items-center gap-1 mt-1">
+                    <Cupom className="w-4 h-4 text-zinc-500" />
+                    <span className="text-zinc-500 text-xs">{formatPrice(getProductPrice(product.url))}</span>
+                  </div>
+                </div>
+                <div className="flex-shrink-0 text-zinc-400 group-hover:text-zinc-600 transition-colors">
+                  <ArrowRight className="w-5 h-5" />
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className="flex items-center gap-4 text-zinc-500 text-sm">
+          <a href="#" className="hover:text-zinc-700 transition-colors">
+            Report
+          </a>
+          <span>•</span>
+          <a href="#" className="hover:text-zinc-700 transition-colors">
+            Privacy
+          </a>
+        </div>
+      </div>
+    </div>
   );
 }
 

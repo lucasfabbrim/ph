@@ -77,7 +77,7 @@ const inter = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "PH (@oordonhas)",
+  title: "Templates PH (@oordonhas)",
 };
 
 export default function RootLayout({

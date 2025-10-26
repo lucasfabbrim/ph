@@ -8,7 +8,7 @@ export const profiles: Record<string, Profile> = {
     bio: 'Conteúdo sobre fitness, suplementação e estilo de vida saudável 💪',
     avatar: '/assets/rezende-profile.png',
     coverImage: '/assets/header.png',
-    sectionTitle: 'Templates',
+    sectionTitle: 'Organize-se e aumente a sua produtividade.',
     couponCode: 'PH',
     contactLink: 'https://api.whatsapp.com/send?phone=5519998521915&text=Olá,%20vim%20pelo%20PH%20e%20tenho%20interesse%20em%20criar%20um%20site.',
     socialLinks: [
